@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		/* transform속성 : 요소에 다양한 변화 줄 때 사용 
+		  => 회전,기울임,이동,확대/축소
+			transform: 함수()
+			translate(x,y): x,y만큼 이동
+			translateX(n) : x축으로 n만큼 이동
+			trnaslateY(n) : y축으로 n만큼 이동
+			scaleX(n) : 가로를 기준으로 n배 확대/축소
+			scaleY(n) : 세로를 기준으로 n배 확대/축소
+			rotate(angle) : angle만큼 시계방향 회전
+			skewX(angle)/skewY(angel) : x/y축을 기준으로 angle만큼 기울임
+			skew(x-a,y-a) : x축으로 x-a만큼,y축으로 y-a만큼 기울임
+			*/
+			.box{
+				position: relative;
+				height: 200px;
+				border: 1px solid red;
+			}
+			.box > div {
+				height: 50px;
+				width: 100px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				background-color: white;
+				border: 1px solid black;
+				line-height: 50px;
+				text-align: center;
+			}
+			.tx{	transform: translateX(150px);}
+			.ty{	transform: translateY(60px); }
+			.txy	{transform: translate(150px,60px);}
+			/* translateZ : perspective 와 같이 사용, perspective보다 작아야함 
+				 Z축: 화면을 기준으로 안 , 밖 */
+			.tz{	transform: perspective(500px) translateZ(100px);}
+			/* transform:scale 확대/축소 */
+			.sx{	transform: translateX(150px) scaleX(1.5);}
+			.sy{	transform: translateY(80px) scaleY(1.5);}
+			.s{		transform: translate(150px,80px) scale(1.5,1.5);}
+			.sz{	transform: perspective(500px) scaleZ(1.5) translateZ(100px);}
+			/* skew: 기울임 */
+			.skx{	transform: translateX(150px) skewX(30deg);}
+			.sky{ transform: translateY(80px) skewY(30deg);}
+			.sk{	transform: translate(150px,80px) skew(30deg,30deg);}
+			/* rotate: 시계방향 회전 */
+			.r{	transform:translateX(150px) rotate(30deg);}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="stand">stand</div>
+		<div class="tx">translateX</div>
+		<div class="ty">trnaslateY</div>
+		<div class="txy">translate</div>
+		<div class="tz">translateZ</div>
+	</div>
+	<div class="box">
+		<div class="stand">stand</div>
+		<div class="sx">scaleX</div>
+		<div class="sy">scaleY</div>
+		<div class="s">scale</div>
+		<div class="sz">scaleZ</div>
+	</div>
+	<div class="box">
+		<div class="stand">stand</div>
+		<div class="skx">skewX</div>
+		<div class="sky">skewY</div>
+		<div class="sk">skew</div>
+	</div>
+	<div class="box">
+		<div class="stand">stand</div>
+		<div class="r">rotate</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>회원가입 예제</title>
+	<style>
+		body{
+			background-color: rgb(245, 246, 247);
+		}
+		h1{
+			font-size: 80px;
+			
+			text-align: center;	
+		}
+		a{
+			color: rgb(0, 200, 80);
+			text-decoration: none;
+		}
+		.box{
+			color: gainsboro;
+			border:1px solid gainsboro;
+			line-height: 25px;
+			width: 460px;
+			height: 51px;
+			display: inline-block;
+			background-color: white;
+		}
+		.psbox{
+			width: 230px;
+			height: 51px;
+		}
+		input{
+			padding: 10px 10px;
+			border: white;
+			width: 334px;
+			height: 29px;
+		}
+		.psbox{
+			display: inline-block;
+		}
+		.psbox > input{
+			width: 116px;
+			height: 29px;
+		}
+		.naver{text-align: center;}
+	</style>
+</head>
+<body>
+	<h1><a href="//www.naver.com">NAVER</a></h1>
+	<div class="naver">
+		<div>
+			<h3>아이디</h3>
+			<div class="box"><input type="text" name="id" id="id">@naver.com</div><br>
+		</div>
+		<div>
+			<h3>비밀번호</h3>
+			<div class="box"><input type="password" name="pw" id="pw"></div>
+		</div>
+		<div>
+			<h3>비밀번호 재확인</h3>
+			<div class="box"><input type="password" name="pw1" id="pw1"></div>
+		</div>
+		<div>
+			<h3>이름</h3>
+			<div class="box"><input type="text" name ="name" id="name"></div>
+		</div>
+		<div>
+			<h3>생년월일</h3>	
+			<!-- <span><div class="psbox"><input type="text" name="ps_id"></div></span> -->
+			<span>
+				<div class="psbox"><input type="month" name="ps_month"></div>
+				<div class="psbox"><input type="text" name="ps_day"placeholder="일" aria-label="일"></div>
+			</span>
+		</div>
+		<div>
+			<form>
+				<div class="box">
+					<select name="gender" id="">성별</select>
+				 </div>
+			</form>
+		</div>
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  </div>
+</body>
+</html>
