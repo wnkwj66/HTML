@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		body{
+			margin: 0;
+		}
+		body::after{
+			clear: both;
+			content: '';
+			display: block;
+		}
+		.box{
+			width:50%; 
+			height: 200px;
+			background-color:aliceblue;
+			/* float: display가 dispaly가 block과  inline-block 상관없이 동작 */
+			float: left;
+			box-sizing: border-box;
+			border: 1px solid red;
+		}
+		.box:nth-child(2){
+			background-color: aqua;
+		}
+		/* box-sizing 속성: 컨텐츠의 크기를 계산하는 방식 설정
+			 -border-box : 속성에서 설정한 가로,세로의 길이가 border,padding,content를 합한 크기
+			 -content-box : 기본,속성에서 설정한 가로와 세로의 길이가 컨텐츠의 가로 세로의 길이가 된다. */
+		</style>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="box"></div>
+</body>
+</html>
