@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+	<!-- <table> : 표
+	 <table> 은 혼자 쓰이지 않고, 다른 태그(<tr>,<td>/<th>)와 같이 사용해야 한다 
+	 <tr> : 한 행을 의미
+	 <td>/<th> : 한 행의 한 열을 의미
+	 <th> : 가운데 정렬, 굵은 글씨
+	 <td> : 왼쪽 정렬
+	border 속성 : 테두리
+	bordercolor 속성: 테두리 색상, 색상 코드나 미리 지정된 색상명 입력
+	<th/td> colspan속성 : 행 합치기
+	<th/td> rowspan속성 : 열 합치기
+	width 속성 : 상위 태그의 비율에 맞게 % 가로 길이 조절 
+	 =>ex) <table width=100% : 브라우저 크기의 100%(마진(여백)을 제외한 100%)
+		 ex) <th width =50%> : <table> 크기의 50% 
+	 => 기본값으로는 태그안에 잇는 문자열 길이의 비율만큼 길이 지정
+	<thead>,<tbody>,<tfoot> 상황에 따라 잘 쓰면 유용한 태그
+	 => thead -> tbody -> tfoot순으로 내용들이 고정됨
+	<caption> : table 표 위에 글자 표시
+	 -->
+	 
+	<table border="1" bordercolor="#ff0000" width =30%>
+		<caption>성적 관리 테이블</caption>
+	 	<thead>
+			<tr>
+				<th width ="50%">이름</th>
+				<th colspan="2"width= "%50">과목/성적</th>
+			</tr>
+		 </thead>
+		<tfoot>
+			<tr>
+				<th colspan="2">합계</th>
+				<th>190</th>
+			</tr>
+		</tfoot>
+	 	<tbody>
+			<tr>
+				<th>홍길동</th>
+				<td rowspan="2">컴퓨터학 개론</td>
+				<th>100</th>
+			</tr>
+			<tr>
+				<td>임꺽정</td>
+				<th>90</th>
+			</tr>
+		</tbody>
+	</table>
+		
+</body>
+</html>

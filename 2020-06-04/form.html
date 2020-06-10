@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+	<!-- <form> : 데이터 값 전송 -->
+  <!-- action : 데이터를 전송할 주소, action이 없는 경우 현재 URL,URI 
+	URL : ???.??/xxx.html, ???.??/xxx.php,???.??/xxx.jsp
+	URI : ???.??/xxx
+	method : 데이터 전송 방식
+	 - get : 기본값, URL에 ?변수명 = 값1 & 변수명2 = 값2 형태로 데이터 전송하는방법(보안에 취약)
+	 - post: Serveltet-Request 에 데이터를 숨겨서 전송
+	enctype : 데이터의 MIME(컨텐츠 타입) 유형
+	 - application/x-www-form-urlencoded : 기본값 
+	 - multipart/form-data : 첨부파일 보낼 때 사용  *(자주사용)
+	 - text/plain : HTML 5에서 디버깅 용으로 추가된 값
+	autocomplete : 자동완성 리스트 
+	 - on : 기본값, 과거 입력값들 보여줌(값을 채움)
+	 - off: 과거 입력값 보여주지 않음(값을 채우지않음)
+  -->
+	<form action="" method="POST" enctype="multipart/form-data" autocomplete="on">
+		<input type="email" name="email">
+		<button>전송</button>
+
+  </form>
+</body>
+</html>

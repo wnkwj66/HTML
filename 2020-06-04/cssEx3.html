@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+	<style>
+		div{
+			color: red;
+			color: #ff0000;
+			color: #f00;
+			color: rgb(255,0,0); /*빨 , 녹 ,파 순서*/
+			color: rgba(255,0,0,1);/*빨, 녹, 파, 투명도(0~10)*/
+			background-color: yellow;/*배경*/
+			border-color: blue;/*테두리 (굵기 , 종류 必)*/
+			border-width: 1px;
+			border-style: solid;
+			text-indent: 15px;/*들여쓰기*/
+			/* 정렬: left | right | center | justify */
+			text-align: center;
+			/* 텍스트꾸미기 :none | underline(밑줄) | overline (윗줄) | line-through(취소선)*/
+			text-decoration: underline;
+			/* 
+			css에서 사용하는 단위
+			 em : 현재 폰트의 배수
+			 rem: 해당 문서 기본 폰트의 배수
+			 %  : 퍼센트
+			 px : 픽셀 수
+			 cm,mm
+			 in : 인치
+			 pt : 포인터 1pt = 1/72in
+			 pc : 피카소 1pc = 12pt
+			 deg: 각도  			 
+			 */
+			 /* font-family : 폰트의 종류 선택
+			 font-family : 폰트1, 폰트2, 폰트3;
+				*/
+				font-family: Arial, "Time new Roman",serif;
+			 /* font 크기 */
+			 font-size: 15px;
+			 /* font 스타일*/
+			 font-style:italic;
+			 /* font 굵기 : 100~900 , bold :700*/
+			 font-weight: bold;
+			 /* font : 폰트 스타일, 폰트 굵기, 폰트 크기, 폰트 패밀리 
+				=> 순서대로 지정해야 함. 스타일과 굵기는 생략 가능 */
+			 font:italic bold 15px Arial, "Time new Roman", serif;
+		}
+		a{
+			text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+		<div>안녕하세요. 제 이름은 홍길동입니다. 만나서 반갑습니다.</div>
+		<a href="//naver.com" class="naver">네이버</a>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+	<!-- 리스트 : 상위/하위 목록으로 구성되어 있는 상황을 나타낼 때 사용 (목차)
+		 <ol> : 순서가 있는 리스트(번호로 표현 // 1. xxx 2.xxx)
+		 <ul> : 순서가 없는 리스트
+		 <il> : <ol> or <ul> 안에서 하위목록 의미-->
+	<!-- 
+		<ol> type 속성
+		 "1" : 기본값
+		 "A","a" => A.xxx B.xxx
+		 "I","i" => Ⅰ.xxx Ⅱ.xxx Ⅲ.xxx Ⅳ.xxx Ⅴ.xxx
+		<ol>의 start 속성
+		 시작번호
+		-->
+	<h2>오늘의 할 일</h2>
+	<ol type="I" start="3">
+		<li>등원</li>
+		<li>공부</li>
+		<li>점심</li>
+		<li>공부</li>
+		<li>하원</li>
+	</ol>
+	<!-- 
+		<ul> type속성
+		 disc : 기본값
+		 circle : ○
+		 square : ■ 
+		-->
+	<ul type="circle">
+		<li>등원</li>
+		<li>공부</li>
+		<li>점심</li>
+		<li>공부</li>
+		<li>하원</li>
+	</ul>
+	<ul>
+		<li>메뉴1
+			<ul>
+				<li>서브메뉴1-1</li>
+				<li>서브메뉴1-2</li>
+				<li>서브메뉴1-3</li>
+			</ul>
+		</li>
+		<li>메뉴2
+			<ul>
+				<li>서브메뉴2-1</li>
+				<li>서브메뉴2-2</li>
+			</ul>
+		</li>
+	</ul>
+</body>
+</html>
