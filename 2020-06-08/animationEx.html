@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		body{
+			margin: 0;
+			padding: 0;
+		}
+		@keyframes move{
+			0%{	
+				left:0%;
+			}
+			50%{
+				left: calc(100% - 100px);
+			}
+			100%{		
+				left: 0%;
+			}
+		}
+		.box{
+			width: 100px;
+			height: 100px;
+			border: 1px solid red;
+			background-color: red;
+			animation: move 2s infinite;
+			position: absolute;
+		}
+		/* top,bottom || left,right 같이 쓰는 경우
+			 : width가 지정 되어있지 않은경우 => left,right
+				 height가 지정 되지않은 경우 => top,bottom  */
+		/* position:absolute 인 경우 가로,세로가 주어지지 않으면 자동 할당 X */
+		.box2{
+			position:absolute;
+			bottom: 0;
+			height: 100px;
+			left: 0;
+			right: 0;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="box2"></div>
+
+	
+</body>
+</html>

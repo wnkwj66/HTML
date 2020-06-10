@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+		}
+		input{
+			/* 컨텐츠의 가로를 계산 할 때는 box-sizing 속성이 border-box || content-box에 따라 방식이 다름
+				 기본 :content-box 
+				 속석명 : 익스플로러
+				 -webkit- 속성명 : 크롬에 최적화 
+				 -moz- 속성명 : firefox 최적화*/
+			box-sizing: border-box;
+			width: 100%;
+			height: 50px;
+			border: 1px solid black;
+			border-radius: 5px;
+		}
+    input[type=text]{
+			color: red;
+		}
+		input[type=password]{
+			color: royalblue;
+		}
+		*[name=name]{
+			text-decoration: underline;
+		}
+		input:focus{
+			background-color: green;
+			color: white;
+		}
+	</style>
+</head>
+<body>
+	<input type="text"  name ="name" placeholder="텍스트">
+	<input type="password" placeholder="비밀번호">
+	<input type="text" placeholder="텍스트">
+	<input type="password" placeholder="비밀번호">
+</body>
+</html>

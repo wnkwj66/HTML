@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+		}
+		.box{
+			width: 500px;
+			/* height : 100% => 부모태그 높이의 100%계산한다
+							 부모태그에 높이가 정해지지 않은 경우 부모태그의 높이는 부모태그안에 있는 컨텐츠의 높이가 된다.
+							 컨텐츠의 높이가 없으면 부모태그 높이는 0 , 따라서 부모태그 100%도 0 */
+			/* vh : 브라우저 높이 길이 
+			   vw : 브라우저 가로 길이*/
+			height: 500px;
+			background-color: yellow;
+			margin: 0 auto; /*block일때만 사용가능*/
+			margin-top: calc(50vh - 250px);
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>

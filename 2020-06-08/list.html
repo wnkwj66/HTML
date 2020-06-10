@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>list</title>
+	<style>
+		/* list와 관련된 css속성은 list 마커와 관련된 속성이다.
+		list의 마커 : list앞에있는 숫자나,기호 */
+		ul{
+			
+			/* list-style-type:none;  => 마커의 기본 모양 선택*/
+			list-style-position: inside;/* : <li>안에 마커생성*/
+			/* list-style-position: outside; : <li>밖에 마커생성 */
+			list-style-image: url(../2020-06-03/tani.jpg); /*=> 마커의 모양을 이미지 불러와서 변경*/
+		}
+		li{
+			background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+	<!-- 메뉴 구성 시 <div>보다 <ul>,<li>를 이용해서 구성하고,이때 메뉴의 마커를 없애서 사용 -->
+	<ul>
+		<li>사과</li>
+		<li>배</li>
+		<li>포도</li>
+	</ul>
+	
+</body>
+</html>

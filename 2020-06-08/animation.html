@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CSS:애니메이션</title>
+	<style>
+		/* 
+		1. 애니메이션 등록
+		2. 등록한 애니메이션 호출 */
+
+		/* 
+		1. 애니메이션 등록
+		 :@keyframes 애니메이션명{
+			 시간비율(%){
+				 스타일;
+			 }
+			 시간비율{
+				 스타일;
+			 }
+		 }
+			*/
+			@keyframes zoom{
+				0%{
+					font-size: 16px;
+				}
+				50%{
+					font-size: 40px;
+				}
+				0%{
+					font-size: 16px;
+				}
+			}
+			@keyframes zoom2 {
+				0%{
+					font-size: 16px;
+				}
+				50%{
+					font-size: 40px;
+				}
+				100%{
+					font-size: 16px;
+				}
+			}
+		/* 2. 애니메이션 호출 */
+		.zoomin{
+			color: red;
+			/* zoomin 애니메이션 선택 */
+			animation-name: zoom;
+			/* 애니메이션 실행시간 5s */
+			animation-duration: 3s;
+			/*  반복 횟수 */	
+			animation-iteration-count: infinite;
+		}
+		.zoomin1,
+		.zoomin2,
+		.zoomin3,
+		.zoomin4,
+		.zoomin5{
+			color: blue;
+			animation: zoom2 3s infinite;
+		}
+		.zoomin2{
+			animation-timing-function: ease-in-out;
+		}
+		.zoomin3{
+			animation-timing-function: linear;
+		}
+		.zoomin4{
+			animation-timing-function: ease-in;
+		}
+		.zoomin5{
+			animation-timing-function: step-start;
+		}
+		div{
+			height: 60px;
+		}
+
+	</style>
+</head>
+<body>
+	<div>
+	  <span class="zoomin">꽝!</span>
+	  <span class="zoomin1">뿌앙</span>
+	</div>
+	<div>
+	  <span class="zoomin">꽝!</span>
+	  <span class="zoomin2">뿌앙</span>
+	</div>
+	<div>
+	  <span class="zoomin">꽝!</span>
+	  <span class="zoomin2">뿌앙</span>
+	</div>
+	<div>
+	  <span class="zoomin">꽝!</span>
+	  <span class="zoomin3">뿌앙</span>
+	</div>
+	<div>
+	  <span class="zoomin">꽝!</span>
+	  <span class="zoomin4">뿌앙</span>
+	</div>
+	<div>
+	  <span class="zoomin">꽝!</span>
+	  <span class="zoomin5">뿌앙</span>
+  </div>
+</body>
+</html>

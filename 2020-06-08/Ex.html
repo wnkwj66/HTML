@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		body{
+			margin: 0;
+			height: 100px;
+			border: 1px solid red;
+			position: relative;
+			z-index: 10;
+		  }
+		.box{
+			margin: 0 auto;
+			width: calc(100% / 3);
+			height: 100px;
+			border: 1px solid black;
+			display: inline-block;
+			box-sizing: border-box;
+			position: relative;
+			text-align: center;
+			line-height: 80px;
+			z-index: 9;
+		}
+		.box:nth-of-type(1){
+			top: 0px;
+			left: 0px;
+			float: left;
+		}
+		.box:nth-of-type(2){
+			top: 0px;
+			left: 0px;
+			float: left;
+		}
+		.box:nth-of-type(3){
+			top:0px;
+			left: 0px;
+			float: right;
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="box menu1">메뉴1</div>
+	<div class="box menu2">메뉴2</div>
+	<div class="box menu3">메뉴3</div>
+
+
+</body>
+</html>
