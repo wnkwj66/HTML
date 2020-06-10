@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>회원가입예제_1</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background-color: rgb(245, 246, 247);
+		}
+		.container{
+			width: 700px;
+			margin: 0 auto;
+			height: 1000px;
+		
+		}
+		a{
+			text-decoration: none;
+		}
+		.logo{
+			text-align: center;
+			margin-top: 20px;
+		}
+		.logo >a{
+			color:  rgb(0, 200, 80);
+			font-size: 50px;
+			font-weight: 900;
+		}
+		.text-bold{
+			font-weight: bold;
+		}
+		.box-id,
+		.box-pw,
+		.box-name,
+		.box-year,
+		.box-month,
+		.box-day,
+		.box-gender,
+		.box-email,
+		.box-country,
+		.box-certificatioin,
+		.box-number-in{
+			height: 50px;
+			border: 1px solid gainsboro;
+			background-color: white;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			box-sizing: border-box;
+			padding: 10px ;
+		}
+		.box-certificatioin{
+			background-color:  rgb(245, 246, 247);
+		}
+		.box-year,
+		.box-month{
+			margin-right: 10px;
+		}
+		.box-number-in{
+			width: calc(100% -150px - 10px);
+			float: left;
+		}
+		.box-number::after{
+			clear: both;
+			content: '';
+			display: block;
+		}
+		.box-month,
+		.box-day,
+		.box-year{
+			float: left;
+			width: calc((100% - 20px) /3);
+			box-sizing: border-box;
+		}
+		.box-id > input,
+		.box-name>input{
+			height: 28px;
+			width: calc(100% - 96px);
+			border: none;
+		}
+		.box-id>label{
+			line-height: 28px;
+		}
+		.box-pw>input{
+			height: 28px;
+			width: calc(100% - 38px);
+			border: none;
+		}
+		.box-pw>a{
+			display: block;
+			float: right;
+			width: 28px;
+			height: 28px;
+			border: 1px solid black;
+			background-color: white;
+			cursor: pointer;
+		}
+		.box-name{
+			width: 100%;
+		}
+		.box-year>input,
+		.box-day>input,
+		.box-email>input,
+		.box-month>select,
+		.box-gender>select,
+		.box-country>select,
+		.box-certificatioin>input
+		{
+			width: 100%;
+			height: 28px;
+			border: none;
+		}
+		.text-small{
+			font-weight: 100;
+			font-size: 14px;
+			color: gray;
+		}
+		.btn-certificatioin{
+			height: 50px;
+			background-color: rgb(0, 200, 80);
+			border: none;
+			width: 150px;
+			display: block;
+			margin-top:1
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="logo">
+			<a href="//www.naver.com"> NAVER</a>
+		</div>
+		<div class="container-id">
+			<div class="text-id">아이디</div>
+			<div class="box-id">
+				<input type="text" name="id" id="id">
+				<label for="id">@naver.com</label>
+			</div>
+		</div>
+		<div class="container-pw">
+			<div class="text-bold">비밀번호</div>
+			<div class="box-pw">
+				<input type="password" name="pw" id="pw">
+				<a href="#"></a>
+			</div>
+		</div>
+		<div class="container-pw">
+			<div class="text-bold">비밀번호 확인</div>
+			<div class="box-pw">
+				<input type="password" name="pw2" id="pw2">
+				<a href="#"></a>
+			</div>
+		</div>
+		<div class="container-name">
+			<div class="text-bold">이름</div>
+			<div class="box-name">
+				<input type="text" name="name" id="name">
+			</div>
+		</div>
+		<div class="container-birth">
+			<div class="text-birth">생년월일</div>
+			<div class="box-birth">
+				<div class="box-year">
+					<input type="text" name="year" id="year">
+				</div>
+				<div class="box-month">
+					<select name="month" id="month">
+						<option value="1">월</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+						
+					</select>
+				</div>
+				<div class="box-day">
+					<input type="text" name="day" id="day">
+				</div>
+				
+			</div>
+		</div>	
+		<div class="container-gender">
+			<div class="text-bold">성별</div>
+			<div class="box-gender">
+				<select name="gender" id="gender">
+					<option value="">성별</option>
+					<option value="male">남자</option>
+					<option value="female">여자</option>
+				</select>
+			</div>
+		</div>	
+		<div class="container-email">
+			<div class="text-bold">본인확인 이메일<span class="text-small">(선택)</span></div>
+			<div class="box-email">
+				<input type="text" name="email" id="email">
+			</div>
+		</div>
+		<div class="container-phone">
+			<div class="text-bold">휴대전화</div>
+			<div class="box-phone">
+				<div class="box-country">
+					<select name="country" id="country">
+						<option value="+233">가나 +233</option>
+						<option value="+241">가봉 +241</option>
+						<option value="+82" selected>대한민국 +82</option>
+					</select>
+				</div>
+				<div class="box-number">
+					<div class="box-number-in">
+						<input type="text" name="number" id="number">
+					</div>
+					<button class="btn-certificatioin"></button>
+				</div>
+				<div class="box-certificatioin">
+					<input type="text" disabled value="인증번호를 입력하세요.">
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>
