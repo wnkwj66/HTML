@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>반응형 예제</title>
+  <style>
+    /* 상자 100px x 100px를 5개 만들어서 화면에 출력하고
+    화면의 길이가 500px 이하이면 상자가 50px x 50px로 변경되도록 작성 */
+    .box{
+      width: 100px;
+      height: 100px;
+      border: 1px solid black;
+      display: inline-block;
+    }
+    @media(max-width: 600px){
+      .box{
+        width: 50px;
+        height: 50px;
+      }
+      .box:nth-of-type(4),
+      .box:nth-of-type(5){
+        display: none;
+      }
+      
+    }
+    @media(min-width: 601px){
+      .box{
+        width: 100px;
+        height: 100px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="box">박스1</div>
+  <div class="box">박스2</div>
+  <div class="box">박스3</div>
+  <div class="box">박스4</div>
+  <div class="box">박스5</div>
+</body>
+</html>
