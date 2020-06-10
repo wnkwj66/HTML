@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 정보를 입력하는 태그로 많이 사용되는 태그,inline-block태그 -->
+    <!-- type : 속성 => id입력이나 검색창 등 다양한 곳에 활용 -->
+    타입)<input type="text"><br>
+    <!-- 초기값을 지정하려면 value 속성을 이용하여 지정 -->
+    <input type="text" value = "Null"><br>
+    <!-- placeholder속성:google 검색창처럼 안내문구 넣고싶은 경우 -->
+    <input type="text" placeholder="검색어를 입력하세요"><br>
+    <!-- readonly : 지정된 문자열을 열람 (수정x,읽기만가능) -->
+    <!-- readonly (= 생략 / true / readonly) -->
+    <input type="text" value = "읽기전용"readonly="true"><br> 
+    <!-- password 속성 : 비밀번호 관리할 때 사용 -->
+    비밀번호)<input type="password"placeholder="비밀번호"><br>
+    <!-- <input>을 이용하여 버튼 생성 -->
+    <!-- button 속성 : 일반 버튼 -->
+    버튼)<input type="button"value="확인"><br>
+    <!-- reset속성 : input 태그들의 값을 초기값으로 변경 <form>안에 있어야 함 -->
+    <!-- submit속성 : 서버로 데이터를 전송하는 버튼 (이동) <form>안의 값들을 서버로 보냄 -->
+    <form>
+				리셋,서브밋)
+        <input type="text" name="data"><br>
+        <input type="reset" value="리셋"><br>
+        <input type="submit" value="이동"><br>
+    </form>
+    <!-- 체크박스 : 다중 선택 가능 / 선택 안하는 경우 -->
+		<!-- 체크박스 속성 value : 서버에 데이터를 전송할 때 보내는 값 설정 -->
+		<!-- name속성 : 중복가능, 주로 데이터 전송 시 전송하는 데이터의 이름(값x)을 알려줄 때 사용 -->
+    <form >
+        체크박스)좋아하는 중국집 메뉴를 선택하세요(다중선택 가능) <br>
+        <input type = "checkbox" name="food" value="짜장면"> 1.짜장면
+        <input type = "checkbox" name="food" value="짬뽕"> 2.짬뽕
+        <input type = "checkbox" name="food" value="탕수육"> 3.탕수육
+        <input type = "checkbox" name="food" value="고추잡채"> 4.고추잡채
+        <input type = "checkbox" name="food" value="유산슬"> 5.유산슬 <br>
+        <input type="submit" value="전송">
+    </form>
+		<!-- 라디오박스 : 한개만 선택하는 경우-->
+		<!-- name이 같은 경우 한개만 선택 가능(중복x) -->
+		<!-- check속성 : 기본값 설정 -->
+		<!-- id속성 <label> : <input>안의 id = label for 인 경우 해당 문자만 클릭해도 체크 됨 -->
+    <form>
+			<input type="radio" name="gender" value="male" id="male" checked>
+			<label for = "male">남성</label>
+			<input type="radio" name="gender" value="female" id="female">
+			<label for="female">여성</label> 
+			<input type="submit" value="전송">
+		</form>
+		<!-- email속성 : 입력한 속성 값이 이메일 형태인지 알려줌 -->
+		<form>
+			<input type="email" name="e-mail">
+			<input type="submit" value="전송">
+		</form>
+		<!-- file속성 : 첨부파일 불러올 때 사용, 첨부파일을 서버에 보내려면 <form>안의 속성을 변경해 주어야함.나중에 확인-->
+		<input type="file"><br>
+		<!-- hidden 속성 : 필요한 정보지만 화면에서 보여줄 필요가 없는 경우 사용(빈도 높음) -->
+		<input type="hidden" value="123"><br>
+		<!-- ================== ↓사용빈도 적음↓==================== -->
+		<!-- DataTimePicker 플러그인 있기 때문 -->
+		<!-- month 속성: 년 월 표시 -->
+		<input type="month"><br>
+		<!-- week 속성 : 년 주 표시 -->
+		<input type="week"><br>
+		<!-- date 속성 : 년 월 일 표시 -->
+		<input type="date"><br>
+		<!-- datetime-local 속성 : 년 월 일 시 분 초 표시 -->
+		<input type="datetime-local"><br>
+		<!-- time 속성: 시 분 초 -->
+		<input type="time"><br>
+		<!-- ===================================================== -->
+		<!-- image 속성 : 이미지 추가.  <img>로 대체가능 
+				 src : 이미지 주소, alt : 이미지가 없는 경우 보여줄 문구
+				 width : 가로길이, height : 세로길이 , auto : 이미지 비율에 맞게 자동 설정-->
+	
+		<input type="image" width = "100px" height="auto"src="https://t1.daumcdn.net/liveboard/holapet/0e5f90af436e4c218343073164a5f657.JPG" alt="강아지">
+		<!-- html 파일과 저장한 이미지 파일이 같은 폴더에 있는경우 파일명(dog.jpg) 
+				 다른 폴더인 경우 이미지 위치를 html위치 기준으로 찾아가야한다.
+				 찾아가는 방법 : '..'은 상위 폴더를 의미-->
+		<input type="image" width = "400px" height="auto"src="tani.jpg" alt="이미지 없음">
+		<input type="image" width = "400px" height="auto"src="../2020-06-03/tani2.jpg" alt="이미지 없음">
+		
+		<!-- url 속성: URL 주소가 아니면 전송이 안됨 -->
+		<!-- URL , Email 속성 사용빈도 ↓  : 정규 표현식을 이용하여 일괄 처리-->
+		<form>
+			<input type="url" name="url">
+			<input type="submit" value="전송">
+		</form>
+		<!-- search 속성 : text와 비슷하며 차이는 x버튼이 있어서 내용초기화 가능 -->
+		<input type="search" name="search">
+		<!-- range 속성 : 상태바가 생겨 범위를 조절할 수 있음 // 사용빈도 ↓ : 브라우저별로 모양이 다르기 때문-->
+		<form>
+		<input type="range" name="range">
+		<input type="submit" value="전송">
+		</form>
+		<!-- color 속성 : 색상정보를 가져올 수 있음
+			색상정보(16진수) ex)검정색: #000000 
+			일반적으로 색상은 rgb로 표현하며,r(빨강),g(녹색),b(파랑)는 0~255값을 가짐
+			전송시 $은 %23으로 인코딩 되어 전송된다.-->
+		<form>
+			<input type="color" name="color">
+			<input type="submit" value="전송">
+		</form>
+		
+
+</body>
+</html>

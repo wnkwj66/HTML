@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <a> : 다른 URL로 이동하는 태그 
+				 href 속성: 이동 할  URL
+				 현재 페이지와 같은 홈페이지 내의 다른 페이지인 경우
+				 현재 페이지와 다른 홈페이지를 이동하는 경우 : http:// or // 추가
+		-->
+		<a href="/2020-06-03/texttag.html">text 태그 예제1</a><br>
+		<a href="./texttag.html">text 태그 예제2</a><br>
+		<a href="https://www.naver.com/">네이버1</a><br>
+		<a href="www.naver.com/">네이버2</a><br>
+		<!-- <a> target 속성 -->
+		<!-- target 속성값이 _self인 경우 : 기본값 -->
+		<a href="https://www.naver.com/" target="_self">네이버 target :_self</a><br>
+		<!-- target 속성값이 _blank인 경우 : 새창에서 링크 열림 -->
+		<a href="https://www.naver.com/" target="_blank">네이버 target :_blank</a><br>
+		<!-- target 속성값이 _parent인 경우 : 상위창에서 링크 열림.
+				 상위 없는 경우_self와 같음-->
+		<a href="https://www.naver.com/" target="_parent">네이버 target :_parent</a><br>		 
+		<!-- target 속성갑싱 _top인 경우 : 최상위창에서 링크 열림.
+				 상위 없는 경우 _self와 같음 -->
+		<a href="https://www.naver.com/" target="_top">네이버 target :_top</a><br>
+		<!-- 다운로드 -->
+		<a href="tani.jpg" download="" target="_blank">연탄이~</a><br>
+		<!-- 전화번호 연결 : tel:+82(한국국제번호)-->
+		<a href="tel:+821012345678">010-1234-5678</a><br>
+		<!-- 메일 연결 mailtto:-->
+		<a href="mailto:wnkwj66@naver.com">메일보내기</a><br>
+		<!-- 새창에 네이버로 이동하게 하는 버튼 생성 -->
+		<button>
+			<a href="//www.naver.com/"target="_blank">네이버</a>
+		</button><br>
+		<!-- 아래 방법이 더 적절 : 버튼만 눌러도 이동 // 위의 방법은 버튼안의 글자를 눌러야 이동(버튼만 누르면 x) -->
+		<a href="//www.naver.com/" target="_blank">
+		<button>네이버</button></a><br>
+		<!-- 싱커 : 현재 페이지 내의 특정 위치로 이동하는 기능 / 사용하려면 id가 할당되어 있어야함 -->
+		<a href="#id이름">이동</a>
+</body>
+</html>

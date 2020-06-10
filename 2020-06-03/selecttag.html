@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <select>  : 생년월일 선택 시, 게시글 검색 분류 선택 등과 같이 미리 지정된 값들을 선택 시 사용
+         <option>과 같이 사용, option : 미리 지정된 값 // <select>,<input> : <form>안에서 사용  -->
+	<form>
+		<select name="yeal">
+			<!-- <option> 문자열 </option> : 문자열이 value에 저장
+			 초기 선택 값을 설정하려면 <option>selected 속성 이용, selected없으면 첫번째 <option> 선택-->
+			<option value="">출생년도</option>
+			<option value="2008"selected>2008</option>
+			<option value="2009">2009</option>
+			<option value="2010">2010</option>
+			<option value>2011</option>
+		</select>
+			<input type="submit" value="전송">
+	</form>
+</body>
+</html>
