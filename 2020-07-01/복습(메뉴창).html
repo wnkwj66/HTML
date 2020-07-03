@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>복습(메뉴창)</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+
+		.container{
+			width: 900px;
+			height: 70px;
+			border: 1px solid red;
+			margin: 0 auto;
+			position: relative;
+		}
+		.box{
+			width: calc(100% / 3);
+			height: 100%;
+			border: 1px solid black;
+			float: left;
+			box-sizing: border-box;
+			text-align: center;
+			line-height: 68px;
+			color: black;
+		}
+		.box:hover{
+			border: 1px solid red;
+		}
+		.contents{
+			margin: 10px auto;
+			text-align: center;
+			width: 1000px;
+			height: 500px;
+			position: relative;
+		}
+		.body{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			background-color: seashell;
+		}
+		.display-none{
+			display: none !important;
+		}
+		.body[aria-selected=false]{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<a href="#"><div class="box menu1">메뉴1</div></a>
+		<a href="#"><div class="box menu2">메뉴2</div></a>
+		<a href="#"><div class="box menu3">메뉴3</div></a>
+	</div>
+	<div class="contents">
+		<div class="body menu1-content " aria-selected="false">내용1</div>
+		<div class="body menu2-content " aria-selected="false">내용2</div>
+		<div class="body menu3-content " aria-selected="false">내용3</div>
+	</div>
+	<script>
+		$(function(){
+			$('.menu1').click(function(){
+				$('.menu1-content').attr('aria-selected','true')
+				$('.menu2-content').attr('aria-selected','false')
+				$('.menu3-content').attr('aria-selected','false')
+			})
+			$('.menu2').click(function(){
+				$('.menu2-content').attr('aria-selected','true')
+				$('.menu1-content').attr('aria-selected','false')
+				$('.menu3-content').attr('aria-selected','false')
+			})
+			$('.menu3').click(function(){
+				$('.menu3-content').attr('aria-selected','true')
+				$('.menu2-content').attr('aria-selected','false')
+				$('.menu1-content').attr('aria-selected','false')
+			})
+		})
+	</script>
+</body>
+</html>

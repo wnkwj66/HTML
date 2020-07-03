@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="/js/jquery.js"></script>
+	<script src="https://kit.fontawesome.com/8423121ef6.js" crossorigin="anonymous"></script>
+</head>
+<style>
+	.body{
+		overflow: hidden;
+	}
+	.ham{
+		width: 50px;
+		height: 50px;
+		display: block;
+		float: right;
+		border: 1px solid transparent;
+		box-sizing: border-box;
+		text-align: center;
+		line-height: 48px;
+		font-size: 30px;
+		color: #000;
+	}
+	.ham:hover{
+		border-color: red;
+	}
+	.display-none{
+		display:none !important;
+	}
+	.box-side{
+		width: 200px;
+		height: 400px;
+		position: absolute;
+		top: 50px;
+		right: -200px;
+		background-color: tomato;
+	}
+/* ==================================================== */
+	.box-fold{
+		float: right;
+		font-size: 30px;
+		margin-right: 10px;
+		cursor: pointer;
+		position: relative;
+	}
+	.box-sidemenu{
+		width: 300px;
+		height: 600px;
+		background-color: blue;
+		position: absolute;
+		right: 0px;
+		top: 100px;
+	}
+</style>
+<script>
+	$(function(){
+		$('.box-fold').click(function(){
+			// $('.box-sidemenu').animate({'right':'0'},2000)
+			$('.box-sidemenu').toggle('slow',function(){
+				$()
+			});
+		})
+		$('.ham').click(function(){
+			if(!$('.box-side').is(':animated')){
+				// x버튼 클릭 시↓  *hasClass('className'):classname이 있는지 없는지 확인
+				if($('.fa-bars').hasClass('display-none')){
+					$('.box-side').animate({'right':'-200px'},1000);
+				}
+				//햄버거 버튼 클릭 시 ↓
+				else{
+					$('.box-side').animate({'right':'0'},1000);
+				}
+				$('.fa-bars').toggleClass('display-none');
+				$('.fa-times').toggleClass('display-none');
+			}
+		})
+	})
+
+</script>
+<body>
+	<nav>
+		<a href="#" class="ham">
+			<i class="fas fa-bars"></i>
+			<i class="fas fa-times display-none"></i>
+		</a>
+	</nav>
+	<div class="box-side"></div>
+<div class="box-fold"><i class="fas fa-align-justify"></i></div>
+<div class="box-sidemenu"></div>
+</body>
+</html>
