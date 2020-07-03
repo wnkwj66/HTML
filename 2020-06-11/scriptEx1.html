@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>스크립트</title>
+	<!-- 스크립트 적용 방법
+		1.외부 js파일 불러오는 방법
+		 - 플러그인(기능이 미리 구현된 파일)
+		 - 공통기능
+		 :script태그 이용
+		2.<head>에 script태그 이용하여 작성
+		3.<body>에 script태그 이용하여 작성 
+			html은 <head>부터 시작되기 때문에 script태그의 위치가 <head> || <body> 에 따라 실행결과 달라짐
+			 => <head> 실행되는 동안 <body>안의 코드는 실행x-->
+	<script>
+		// 변수선언 
+		//  var 변수명;
+		var num = 10;
+		// console.log: 개발자 도구의 콘솔창에 결과를 출력하는 함수
+		console.log(num);
+		console.log(3/2);
+		// 'a' , "a" 모두 문자열
+		console.log(3 == '3');
+		// == : 값이 같음
+		// === : 값, 자료형 모두 같음
+		console.log(3 === '3');
+		// != : 값이 다름
+		// !== : 값이 다르거나 자료형이 다름
+		console.log(3 != '3');
+		console.log(3 !== '3');
+		// 배열의 자료형을 일치시키지 않아도 됨.
+		var arr = [];
+		arr = new Array();
+		arr = new Array(1,'2','345');
+		arr.push(1);
+		arr.push('1');
+		console.log(arr);
+		// 조건문과 반목문은 java와 같다
+
+		// 함수 (메서드) 선언
+		/*1. 함수 선언위치에 상관없이 호출 가능
+
+			function 함수명(매개변수들){
+				구현;
+			}
+			2. 함수 선언 후 호출 가능
+
+			var 함수명 = function(매개변수들){
+				구현;
+			}
+		*/
+		f1();
+		function f1(){
+			console.log('함수선언 1')
+		}
+		
+		var f2 = function(){
+			console.log('함수선언 2')
+		}
+		f2();
+		// 매개변수는 이름만 씀
+		function fi(str){
+			console.log(str);
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

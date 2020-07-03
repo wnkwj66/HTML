@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>배열</title>
+	<script>
+		var arr=[];
+		arr.push(1);
+		arr.push('1');
+		arr.push(3.14);
+		arr.push(true);
+		for(var i=0; i<arr.length; i++){
+			console.log(arr[i]);
+		}
+		var tmp = arr.pop();
+		console.log(tmp);
+		console.log(arr);
+		// splice(start,delCount): start번지에서 delCount개를 잘라내 배열을 만드는 함수
+		// start : 시작번지 || delCount: 잘라낼 개수
+		tmp = arr.splice(1,1);
+		console.log(arr);
+		console.log(tmp);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>이벤트</title>
+	<script src="//code.jquery.com/jquery-3.4.1.js"></script>
+</head>
+<body>
+	<input type="text">
+	<button>클릭</button>
+	<script>
+		/*
+		이벤트 : 버튼 클릭, 호버, 커서 이동 ...
+		
+		// 이벤트 동작 등록
+		$('선택자').이벤트명(function(){
+			동작
+		})
+		// 이벤트 동작 호출
+		$('선택자').이벤트명();*/
+		
+		$('button').click(function(){
+			// console.log('클릭!');
+			// <input>에 입력된 value값을 가져와서 변수tmp에 저장
+			var tmp = $('input').val();
+			// console.log를 통해 tmp값을 출력
+			console.log(tmp);
+		})
+		//hover: 2번동작 => 커서가 들어갈 때, 나올 때
+		$('button').hover(function(){
+			console.log('호버');
+		})
+		// 커서 들어갈때 동작1 나올때 동작2
+		/*$().hover(function(){
+				동작1;
+			},fucntion(){
+				동작2;
+			})*/
+		$('button').hover(function(){
+			console.log('마우스인');
+		},function(){
+			console.log('마우스 아웃')
+		})
+	</script>
+</body>
+</html>
