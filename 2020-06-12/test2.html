@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>햄버거 메뉴</title>
+	<script src="../js/jquery.js"></script>
+	<script src="https://kit.fontawesome.com/8423121ef6.js" crossorigin="anonymous"></script>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.nav{
+			height: 40px;
+			background-color: blanchedalmond;
+		}
+		.ham{
+			width: 40px;
+			height: 40px;
+			box-sizing: border-box;
+			border: 1px solid blanchedalmond;
+			text-align: center;
+			line-height: 38px;
+			font-size: 25px;
+			cursor: pointer;
+			float: right;
+		}
+		.ham:hover{
+			border-color: cyan;
+		}
+		.container{
+			position: relative;
+		}
+		.side-menu{
+			width: 100%;
+			height: 100px;
+			background-color: ivory;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="nav">
+		<div class="ham">
+			<i class="fas fa-hamburger"></i>
+		</div>
+	</div>
+	<div class="container">
+		<div class="side-menu">내용</div>
+	</div>
+	<script>
+		$(function(){
+			/*
+			$(선택자).hasClass('클래스')
+			 : 요소가 해당 클래스를 가지고 있는지 알려주는 함수
+			*/
+			var show = false;
+			$('.ham').click(function(){
+				$('.side-menu').stop()
+				.slideToggle(500);
+			})
+		})
+	
+	</script>
+</body>
+</html>
