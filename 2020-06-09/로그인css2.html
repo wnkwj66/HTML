@@ -4,6 +4,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>네이버 로그인</title>
+	<script src="//code.jquery.com/jquery-3.4.1.js"></script>
+
 	<style>
 		*{
 			margin: 0;
@@ -80,7 +82,9 @@
 			width: 160px;
 			background-image: url(checkbox.png);
 			background-repeat: no-repeat;
-
+		}
+		.box-etc-left>label.check{
+			background-image: url(../2020-06-09/checkbox2.png);
 		}
 		.box-etc-right{
 			height: 100%;
@@ -177,8 +181,14 @@
 			<a href="#" class="font-gray">회원가입</a>
 		</div>
 		<div class="box-ad"></div>
-	</div>
-		
-</form>
+	</div>	
+	</form>
+<script>
+	$(function(){
+		$('.box-etc-left>label').click(function(){
+			$(this).toggleClass('check')
+		})
+	})
+</script>
 </body>
 </html>
