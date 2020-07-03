@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		*{
+		border: 2px solid black;
+		padding: 10px;
+		margin: 0;}
+		.bg-red{ background-color: red;}
+		.bg-green{background-color: green;}
+		.bg-blue{background-color: blue;}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<nav>
+			<ul>
+				<li>메뉴1</li>
+				<li>메뉴2</li>
+				<li>메뉴3</li>
+			</ul>
+		</nav>
+	</div>
+	<script>
+		$(function(){
+			// <li>의 부모에 bg-red 클래스를 추가
+			// 요소의 부모클래스 찾는 메서드:parent()
+			$('li').parent().addClass('bg-green');
+			// 요소의 조상클래스 찾는 메서드:parents()
+			// 매개변수가 없는 경우 모든 조상클래스 호출
+			$('li').parents().addClass('bg-red');
+			// 매개변수 있는 경우 해당 매개변수 호출
+			$('li').parents('nav').css('border-color','yellow');
+			// parentuUntil(): 해당 선택자전까지 모든 조상클래스 선택
+			$('li').parentsUntil('body').css('border-top-color','white');
+		})
+	</script>
+</body>
+</html>

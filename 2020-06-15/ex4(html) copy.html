@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+
+	</style>
+</head>
+<body>
+	<button id="add">추가</button>
+	<div class="res">
+	</div>
+	
+	<script>
+		$(function(){
+			$('button').click(function(){
+				$('body').append('<button>추가</button>');
+				console.log('test')
+				$('button').click(function(){
+					$('body').append('<button>추가</button>');
+					console.log('test')
+				})
+			})
+		})
+	</script>
+</body>
+</html>

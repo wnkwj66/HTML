@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		.box{
+			width: 50px;
+			height: 50px;
+			border: 1px solid black;
+			box-sizing:  border-box;
+			display: inline-block;
+		}
+		.border-red{
+			border: 2px solid red
+		}
+	</style>
+</head>
+<body>
+	<button id="prev">이전</button>
+	<button id="next">다음</button>
+	<div class="res">
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+	</div>
+	<script>
+	
+		$(function(){
+			// $('.box').eq(i).css('border-color','red');
+			// $('.box').first().css('border-width','2');
+			// $(.'res').children().first().css({'border-color':'red','border-width':'2px'})
+			$('.res').children().first()
+			.addClass('border-red')
+			var index=0;
+
+			$('#next').click(function(){
+				$('.res').children().eq(index).removeClass('border-red');
+				++index;
+				var cnt = $('.res').children().length;
+				if(index ==cnt){
+					index = cnt-1;
+				}
+				$('.res').children().eq(index).addClass('border-red');
+			})
+			
+			$('#prev').click(function(){
+				$('.res').children().eq(index).removeClass('border-red');
+				$('.res').children().eq(--index).addClass('border-red')
+				var cnt = $('.res').children().length;
+				if(index == -1){
+					index = cnt-1;
+				}
+			})
+		})
+	</script>
+</body>
+</html>

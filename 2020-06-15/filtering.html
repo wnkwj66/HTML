@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>필터링 예제</title>
+	<!-- 요소 중 내가 원하는 요소만  선택-->
+	<script src="../js/jquery.js"></script>
+</head>
+<body>
+	<h1>h1</h1>
+	<h1>h1</h1>
+	<h1 class="h1">h1</h1>
+	<h1>h1</h1>
+	<h1>h1</h1>
+	<h1>h1</h1>
+	<h1>h1</h1>
+	<h1 class="h1">h1</h1>
+	<h1>h1</h1>
+	<h1>h1</h1>
+	<script>
+		$(function(){
+			// filtering : 선택자를 통해 선택된 요소를 걸러 줌
+			// $(선택자).first(): 선택자 요소의 첫번째 요소(eq(0)과 같음)
+			// $(선택자).last() : 선택자 요소의 마지막 요소
+			$('h1').first().css('color','red');
+			$('h1').last().css('text-decoration','underline');
+			// $(선택자).eq(index) : 해당 (index)+1 번째 요소 (index는 0번지부터 시작이기 때문)
+			$('h1').eq(4).css('text-align','center');
+			// $(선택자).filter(선택자1) : 선택자들중 선택자1에 해당하는 요소 선택
+			// 	=> $(선택자선택자1)로 대체 가능 
+			$('h1').filter('.h1').css('background-color','yellow');
+			// $('h1.h1').css('background-color','yellow'); 
+			// $(선택자).not(선택자1) : 선택자들 중 선택자1에 해당하지 않는 모든 요소
+			$('h1').not('.h1').css('font-size','20px');
+		})
+	</script>
+</body>
+</html>

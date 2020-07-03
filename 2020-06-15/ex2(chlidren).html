@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		*{
+		border: 2px solid black;
+		padding: 10px;
+		margin: 0;}
+		.bg-red{ background-color: red;}
+		.bg-green{background-color: green;}
+		.bg-blue{background-color: blue;}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<nav>
+			<ul>
+				<li class="menu1">메뉴1</li>
+				<li class="menu2">메뉴2</li>
+				<li class="menu3">메뉴3</li>
+			</ul>
+		</nav>
+	</div>
+	<script>
+		$(function(){
+			// children():자식 클래스 호출 메서드
+			// children('선택자'): 해당 선택자만 호출
+			$('nav').children().addClass('bg-blue').css('border-color','red');
+			$('ul').children('.menu2').css('color','white')
+			// find(선택자) : 자손 클래스에서 검색하여 호출(선택자 필수) 모든 자손클래스 경우 (*)
+			$('html').find('*').addClass('bg-red');
+			$('html').find('body').css('border-color','white')
+		})
+	</script>
+</body>
+</html>

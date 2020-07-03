@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		.container *{
+			margin : 0;
+			padding: 10px;
+			display: block;
+			border: 2px solid lightgray;
+		}
+	</style>
+		<script>
+			$(function(){
+				// siblings() :모든 형제 클래스 선택 함수(자기 포함x)
+				// siblings(선택자) : 형제 중 선택자와 일치하는 형제 클래스 선택 함수
+				$('h2').siblings().css('border-color','red');
+				$('h2').siblings('span').css('border-color','blue');
+				// next() : 선택자 뒤에 나오는 형제 클래스
+				// nextAll() : 선택자 뒤에 나오는 모든 형제 클래스
+				// nextUntil(선택자1) : 선택자의 다음 형제들 중 선택자1 전까지 호출
+				$('span').next().css('background-color','yellow'); // span 뒤 형제 클래스 :h2
+				$('span').nextAll().css('color','green');
+				$('span').nextAll('p').css('text-decoration','underline');
+				$('span').nextUntil('p').css('border-width','5px');
+				// ============================================================================
+				// prev() : 선택자 앞 형제 클래스
+				// prevAll() : 선택자 앞의 모든 형제 클래스
+				// prevAll(선택자1) : 선택자 앞의 형제들 중 선택자1과 일치하는 형제클래스
+				// prevUntil(선택자1) : 선택자 앞 형제들 중 선택자1 전까지
+				$('.p').prev().css('border-left-color','green');
+				$('.p').prevAll().css('border-top-color','green');
+				$('.p').prevAll('h2').css('font-size','10px');
+				$('.p').prevUntil('p').css('text-align','center');
+
+			})
+		</script>
+</head>
+<body>
+	<div class="container">
+		div
+		<p>p</p>
+		<span>span</span>
+		<h2>h2</h2>
+		<h3>h3</h3>
+		<p class="p">p</p>
+	</div>
+</body>
+</html>
