@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.js"></script>
+</head>
+<body>
+	<div class="timer"></div>
+	<div class="res">0</div>
+	<script>
+		var cnt = 0;
+		var res = 0;
+		setInterval(function(){
+			$('.res').text(cnt);
+			console.log(cnt);
+			cnt++;
+		},1000) // 1000ms = 1초
+	
+	</script>
+</body>
+</html>
