@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="/js/jquery.js"></script>
+</head>
+<style>
+	*{
+		margin: auto;
+		text-align: center;
+	}
+	#box-show{
+		width: 400px;
+		height: 50px;
+		border: 1px solid black;
+		overflow: hidden;
+	}
+	.box-contents{
+		width: 1600px;
+		height: 50px;
+		/* border: 1px solid black; */
+		display: inline-block;
+		position: relative;
+		box-sizing: border-box;
+		margin-left: -800px;
+	}
+	.box{
+		width: 400px;
+		height: 50px;
+		float: left;
+
+	}
+	.box1{
+		background-color: green;
+	}
+	.box2{
+		background-color: red;
+	}
+	.box3{
+		background-color: yellow;
+	}
+</style>
+<script>
+	$(function(){
+		$('button').click(function(){
+			// 박스 요소들이 애니메이션 동작중인지 아닌지
+			if(!$('.box').is(':animated')){
+				$('.box').first().animate({'margin-left':'400px'},1000,function(){
+					$('.box').last().detach().prependTo('.box-contents')
+					$(this).removeAttr('style');
+				})
+			}
+		})
+	})
+</script>
+<body>
+	<div class="box-show" id="box-show">
+		<div class="box-contents">
+			<div class="box box1"></div>
+			<div class="box box2"></div>
+			<div class="box box3"></div>
+		</div>
+	</div>
+	<button>이동</button>
+</body>
+</html>
