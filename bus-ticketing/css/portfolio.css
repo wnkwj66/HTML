@@ -1,0 +1,278 @@
+@charset "utf-8";
+*{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style: none;
+}
+a{
+    color: black;
+    text-decoration: none;
+}
+.wrap{
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+.header h1{
+    float: left;
+}
+.top-menu{
+    height: 23px;
+    border: 1px solid red;
+}
+.top-menu ul{
+    float: right;
+}
+.top-menu ul li{
+    float: left;
+    padding: 0 10px;
+}
+.side-menu{
+    height: 80px;
+    border: 1px solid red;
+    line-height: 78px;
+}
+.side-menu ul{
+    float: right;
+}
+.side-menu>ul>li{
+    text-align: center;
+    float: left;
+    width: 170px;
+}
+.main-container{
+    height: 700px;
+    border: 1px solid green;
+    position: relative;    
+}
+.ticketing-container{
+    width: 450px;
+    border: 1px solid blue;
+    height: 100%;
+    position: absolute;
+    right: 420px;
+    top: 0;
+    box-sizing: border-box;
+    text-align: center;
+}
+.tic-wrap{
+    height: calc(100% - 10%);
+    margin-top: 50px;
+    border: 1px solid purple;
+}
+.route-box{
+    margin: 0 auto;
+    width: calc(100% - 10px);
+    height: 25px;
+    border: 1px solid black;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+.route-box > li{
+    float: left;
+    width: calc((100% / 2) - 2px);
+    border: 1px solid black;
+}
+.place-box{
+    
+    margin: 20px auto;
+    width: calc(100% - 10px);
+    height: 100px;
+}
+.place-box > li{
+    position: relative;
+    box-sizing: border-box;
+    border-radius: 5px;
+    float: right;
+    height: 100%;
+    width: calc(50% - 4px);
+    border: 1px solid black;				
+}
+.place-box > li:first-child{
+    float: left;
+}
+.place-box .text{
+    height: 60px;
+    line-height:  58px;
+}
+.button-change{
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    background-color: blue;
+    right: -21px;
+    top: 35px;
+}
+.place-box > li,
+.date-box >li,
+.grade-box >li{
+    padding: 15px;
+}
+.date-box >li{
+    margin: 10px auto;
+    position: relative;
+    width: 90%;
+    height: 100px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.grade-box > li{
+    border: 1px solid black;
+    margin: 10px auto;
+    width: 90%;
+    height: 70px;
+    border-radius: 5px;
+}
+.complete{
+    margin: 10px auto;
+    width: calc(100% - 10px);
+    height: 70px;
+    border-radius: 5px;
+
+}
+.btn-complete{
+    width: 100%;
+    height: 100%;
+}
+#login-column{
+    margin:0 auto;
+}
+.ticket-confirm{
+    height: 100%;
+}
+/* =============================================================================================================== */
+input:focus{
+    outline:none;
+}
+.page{
+    width: 1000px;
+    margin: 0 auto;
+    padding: 30px 40px 100px;
+}
+.noti-wrap{
+    padding-bottom: 25px;
+    text-align: center;
+}
+.noti-wrap > p{
+    font-size: 24px;
+}
+.container-info{
+    border: 1px solid #e6e6e6;
+}
+.container-info .box-info{
+    margin: 30px auto;
+    width: 500px;
+    position: relative;     
+}
+.box-inputForm{
+    position: relative;
+    padding: 7px 12px;
+    margin-top: 10px;
+    background-color: #f3f4f6;
+}
+.box-inputForm strong{
+    display: block;
+    font-size: 12px;
+}
+.box-label{
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 28px;
+}
+.box-label input{
+    width: 100%;
+    height: 28px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: #000;
+}
+.box-inputForm .radio-wrap{
+    margin: 6px 0px;
+}
+.custom-radio{
+    display: inline-block;
+    position: relative;
+    width: calc(50% - 10px);
+}
+.btns{
+    margin-top: 30px;
+    text-align: center;
+}
+.btn-ready{
+    background-color: #b8becc;
+    color: white;
+}
+.btnL{
+    display: inline-block;
+    min-width: 130px;
+    height: 50px;
+    padding: 0 20px;
+    font-size: 16px;
+    text-align: center;
+    line-height: 50px;
+    border: none;
+    vertical-align: middle;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.box-info #year,#month,#day{
+    width:calc((100% - 84px)/3);
+    display: inline-block;
+}
+#month{
+    width: 139px;
+    border: none;
+    background-color:#f3f4f6;
+}
+.box-info #phone{
+    position: relative;
+    display: inline-block;
+    width: 70%;
+}
+.btn-send{
+    position:absolute;
+    width: 25%;
+    font-size: 14px;
+    background-color:#b8becc;
+    color: white;
+    float: left;
+    text-align: center;
+    margin-top: 10px;
+    height: 58px;
+    line-height: 58px;
+}
+.box-limit{
+    overflow: hidden;
+    margin-top: 8px;
+}
+.box-limit button{
+    float:right;
+    border: 1px solid #d9d9d9;
+    color: #666;
+    height: 30px;
+    padding: 0 10px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+}
+/* 운행정보 페이지*/
+.course-container{
+    width: 80%;
+    margin: 20px auto;
+    border: 1px solid gray;
+    position: relative;
+}
+.course-wrap{
+    width: 50%;
+}
+.course-wrap ul{
+    display: inline-block;
+}
