@@ -76,8 +76,7 @@ a{
     width: calc((100% / 2) - 2px);
     border: 1px solid black;
 }
-.place-box{
-    
+.tic-wrap .place-box{
     margin: 20px auto;
     width: calc(100% - 10px);
     height: 100px;
@@ -264,15 +263,35 @@ input:focus{
     cursor: pointer;
 }
 /* 운행정보 페이지*/
-.course-container{
-    width: 80%;
-    margin: 20px auto;
-    border: 1px solid gray;
-    position: relative;
-}
-.course-wrap{
-    width: 50%;
-}
-.course-wrap ul{
+.course-box{
+    width: 100%;
     display: inline-block;
+    padding:10px;
+    margin: 0 auto;
+}
+.course-box .place-box,
+.course-box .date-box,
+.course-box .grade-wrap,
+.course-box .complete{
+    margin-top: 20px;
+    width: calc(50% - 4px);
+    float: left;
+}
+.course-box .place-box{
+    height: 115px;
+}
+.course-box .date-box{
+    float: right;
+}
+.course-box .date-box li{
+    height: 83px;
+    padding: 15px;
+    margin: 0;
+}
+.grade-wrap .grade-box li{
+    margin: 0;
+    width: 93.5%;
+}
+.grade-wrap .complete{
+    float: left;
 }
