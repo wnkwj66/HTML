@@ -276,7 +276,6 @@ input:focus{
     cursor: pointer;
 }
 /* 운행정보 페이지*/
-<<<<<<< HEAD
 .course{
     position: relative;
 }
@@ -344,13 +343,28 @@ input:focus{
     width: 46px;
     height: 46px;
     color: #767676;
+}
+.remodal-close {
     position: absolute;
     top: 0;
+    display: block;
+    overflow: visible;
     margin: 0;
     padding: 0;
     cursor: pointer;
     transition: color 0.2s;
     text-decoration: none;
+    border: 0;
+    outline: 0;
+    background: transparent;
+}
+.remodal-close:before {
+    content: '';
+    background: url(/bus-ticketing/css/img/close_mobile.png) center center no-repeat;
+    background-size: 16px;
+    width: 16px;
+    height: 16px;
+    padding: 15px;
 }
 .pop_place .cont {
     padding: 30px 30px 0;
@@ -432,7 +446,7 @@ input:focus{
     position: absolute;
     top: 28px;
     left: 50%;
-    background: #FFF;
+    background: #FFF url(/bus-ticketing/css/img/ico_arrow.png) center center no-repeat;
     background-size: 14px 9px;
     width: 30px;
     height: 30px;
@@ -589,12 +603,11 @@ input:focus{
     width: -webkit-calc(100% - 170px);
     width: -moz-calc(100% - 170px);
     width: calc(100% - 170px);
-    display: none;
+    /* display: none; */
 }
 .pop_place .area_scroll, .pop_place .terminal_scroll {
     height: 420px;
 }
-=======
 .course-box{
     width: 100%;
     display: inline-block;
@@ -627,4 +640,43 @@ input:focus{
 .grade-wrap .complete{
     float: left;
 }
->>>>>>> master
+.pop_place .ternimal_box {
+    overflow: hidden;
+    position: relative;
+    height: 420px;
+    margin-top: 5px;
+    border-top: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+}
+.pop_place .ternimal_box:before {
+    display: inline-block;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 135px;
+    width: 1px;
+    height: 100%;
+    border-left: 1px solid #e6e6e6;
+}
+.pop_place .terminal_list {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: -webkit-calc(100% - 170px);
+    width: -moz-calc(100% - 170px);
+    width: calc(100% - 170px);
+}
+.pop_place .terminal_list li {
+    float: left;
+    width: 33.33%;
+    border-bottom: 1px solid #e6e6e6;
+}
+.pop_place .terminal_list li span {
+    display: block;
+    height: 40px;
+    font-size: 16px;
+    color: #999;
+    line-height: 40px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
