@@ -680,3 +680,6 @@ input:focus{
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+.display-none{
+    display: none !important; 
+}

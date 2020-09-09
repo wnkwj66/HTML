@@ -1,0 +1,1543 @@
+<!doctype html>
+
+<html lang="ko">
+
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+<title>고속버스통합예매</title>
+
+<link rel="stylesheet" type="text/css" href="/test/css/reset.css">
+<link rel="stylesheet" type="text/css" href="/test/css/plugin.css">
+<link rel="stylesheet" type="text/css" href="/test/css/layout.css?v=0.5">
+<link rel="stylesheet" type="text/css" href="/test/css/content.css?v=0.9">
+<link rel="shortcut icon" href="/images/favicon.ico">
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+<script type="text/javascript">
+/*********************************************
+* 상수
+*********************************************/
+</script>
+
+
+<link rel="stylesheet" type="text/css" href="/test/css/ui.jqgrid.custom.css" />
+
+<script type="text/javascript" src="/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+//쿠키 가져오기
+function getCookie( name ) {
+var nameOfCookie = name + "=";
+var x = 0;
+while ( x <= document.cookie.length ) {
+var y = (x+nameOfCookie.length);
+if ( document.cookie.substring( x, y ) == nameOfCookie ) { 
+    if ( (endOfCookie=document.cookie.indexOf( ";", y )) == -1 ) {
+        endOfCookie = document.cookie.length;
+    }
+    return unescape( document.cookie.substring( y, endOfCookie ) );
+}
+x = document.cookie.indexOf( " ", x ) + 1;
+if ( x == 0 ) {
+    break;
+}
+}
+return ""; 
+}
+//쿠키 넣기
+function setCookie( name, value, expiredays ) {
+var todayDate = new Date();
+todayDate.setDate( todayDate.getDate() + expiredays );
+document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+}
+
+// 상단 네비게이션, 모바일 좌측, 모바일 하단 언어선택 설정
+var lngCdCookie = getCookie("LNG_CD");
+
+lngCdCookie = (lngCdCookie != null && lngCdCookie != undefined && lngCdCookie != "") ? lngCdCookie : "";
+var lngCd = (lngCdCookie == "EN" || lngCdCookie == "CN" || lngCdCookie == "JP") ? lngCdCookie : "KO";
+$(document).ready(function() {
+if (navigator.userAgent.toUpperCase().indexOf("MSIE 5") >= 0 || navigator.userAgent.toUpperCase().indexOf("MSIE 6") >= 0 || navigator.userAgent.toUpperCase().indexOf("MSIE 7") >= 0 || navigator.userAgent.toUpperCase().indexOf("MSIE 8") >= 0) {
+// IE 8 이하
+if (location.href.indexOf("/underIE8.do") < 0) {
+    // IE 8 이하 페이지 아님
+    location.href = "/underIE8.do";
+    return false;
+}
+}
+if (window.innerWidth < 768) {
+setCookie("IS_MOBILE_YN_WIDTH","Y",365);
+if (lngCd == "KO" && location.href.indexOf("/cmn/") < 0 && location.href.indexOf("/mrs/mrsrecppub.do") < 0 && location.href.indexOf("/mrs/mrsrecppub4.do") < 0 && location.href.indexOf("/underIE8.do") < 0 && location.href.indexOf("/mrs/mrsmbltck.do") < 0 && location.href.indexOf("/adtnprdnew/prchpt/adtnrecppubmbl.do") < 0 && location.href.indexOf("/adtnprdnew/frps/frpsPrchGdMbl.do") < 0) {
+    location.href = "/mblIdx.do";
+    return false;
+}
+} else {
+setCookie("IS_MOBILE_YN_WIDTH","N",365);
+}
+// 타이틀 수정
+if ($("h2").length > 0) {
+$("title").text($("title").text() + " - " + $("h2:eq(0)").text());
+}
+var $objBody = $("body");
+if (!($objBody.hasClass("KO") || $objBody.hasClass("EN") ||  $objBody.hasClass("CN") ||  $objBody.hasClass("JP"))) {
+$objBody.addClass(lngCd);
+}
+
+$("#lng_cd_navi option[value='" + lngCd + "'],#lng_cd_foot option[value='" + lngCd + "']").attr("selected","selected");
+$("#lng_cd_navi,#lng_cd_foot").unbind("change").bind("change",function() {
+var tempCd = this.value;
+lngCd = (tempCd != null && tempCd != undefined && tempCd != "" && (tempCd == "EN" || tempCd == "CN" || tempCd == "JP")) ? tempCd : "KO";
+setCookie("LNG_CD",lngCd,1);
+lngCdCookie = lngCd;
+//document.location.reload();
+location.href = "/main.do";
+}); 
+
+});
+
+
+if (lngCd == "KO") {
+var dt = new Date();		//오늘날짜 전체
+var yyyy  = dt.getFullYear();		//선택한 년도
+var mm    = dt.getMonth()+1;		//선택한 월
+var mm2Len = Number(mm) < 10 ? "0"+mm : mm;			// 선택ㅡㅜ?ㅌ월 ex:01 두글자로 변환
+var ddTo    = Number(dt.getDate()) < 10 ? "0"+dt.getDate() : dt.getDate(); 			// 숫자형
+var yymmddD0 = yyyy+""+mm2Len+""+ddTo;		//오늘날짜
+
+var url = window.location.pathname;
+
+if (yymmddD0 < 20200128) {
+if (url == "/main.do")
+    location.href="/mainExp.do";
+}
+}
+
+</script>
+<script type="text/javascript" src="/js/ui.js"></script>
+<script type="text/javascript" src="/js/plugin.js"></script>
+<script type="text/javascript" src="/js/common.js?v=1"></script>
+
+<script type="text/javascript" src="/js/jquery/jquery.number.js"></script>
+<script type="text/javascript" src="/js/security.js?v=0.1"></script>
+</head>
+
+
+
+<body class="main">
+<div id="wrap">
+<!-- left menu include -->
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/common/left.js"></script>
+
+<form name="leftForm" id="leftForm">
+<input type="hidden" id="leftNtcNo" name="ntcNo" />
+</form>
+
+
+<script>
+$(function(){
+var dt = new Date();		//오늘날짜 전체
+var yyyy  = dt.getFullYear();		//선택한 년도
+var mm    = dt.getMonth()+1;		//선택한 월
+var mm2Len = Number(mm) < 10 ? "0"+mm : mm;			// 선택ㅡㅜ?ㅌ월 ex:01 두글자로 변환
+var ddTo    = Number(dt.getDate()) < 10 ? "0"+dt.getDate() : dt.getDate(); 			// 숫자형
+var yymmddD0 = yyyy+""+mm2Len+""+ddTo;		//오늘날짜
+
+var url = window.location.pathname;
+
+if (yymmddD0 < 20200128) {
+$("#rotinf").hide();
+}
+});
+</script>
+
+<!-- 페이지 분류 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 170109 gnb 수정 -->
+<!-- 170109 gnb 수정 -->
+<div id="gnb" class="gnb_pc">
+<h1 class="logo"><a href="/main.do">고속버스통합예매</a></h1>
+<div class="menu">
+    <ul class="depth1">
+        <li id="rotinf" >
+            <a href="/mrs/rotinf.do">고속버스예매</a>
+        </li>
+        <li >
+                <a href="#">예매확인</a>
+            <ul class="depth2">
+                <li >
+                    
+                        <a href="/mrs/mrscfmlgnchec.do">예매 확인/취소/변경</a>
+                    
+                    
+                </li>
+                <li ><a href="/mrs/mrsrecplist.do">영수증 발행</a></li>
+            </ul>
+        </li>
+        <li >
+            <a href="#">운행정보</a>
+            <ul class="depth2">
+                <li ><a href="/oprninf/alcninqr/oprnAlcnPage.do">시간표조회</a></li>
+                <li ><a href="/oprninf/arscgd/oprnArscGd.do">도착시간안내</a></li>
+            </ul>
+        </li>
+        
+        
+            <li >
+                <a href="#">고속버스 프리패스/정기권</a>
+                <ul class="depth2">
+                    
+                        <li ><a href="/adtnprdnew/frps/frpsPrchGd.do">프리패스 여행권</a></li>
+                    
+                    
+                    <li ><a href="/adtnprdnew/pass/passPrchGd.do">정기권</a></li>
+                    <li ><a href="/adtnprdnew/prchpt/prdPrchPt.do">상품 구매내역</a></li>
+                </ul>
+            </li>
+        
+        <li >
+            <a href="#">이용안내</a>
+            <ul class="depth2">
+                <li ><a href="/ugd/mrsgd/Mrsgd.do">예매 안내</a></li>
+                <li ><a href="/ugd/mrsgd/MrdgdPrch.do">결제수단 안내</a></li>
+                <li ><a href="/ugd/rygd/Rygd.do">승차권 환불안내</a></li>
+                <li ><a href="/ugd/mlggd/Mlggd.do">프리미엄 마일리지 안내</a></li>
+                <li ><a href="/ugd/crewgd/Crewgd.do">국민안전 승무원제 안내</a></li>
+                <li ><a href="/ugd/trtrgd/Trtrgd.do">휴게소 환승안내</a></li>
+                <li ><a href="/ugd/trmlgd/Trmlgd.do">고속버스 터미널 안내</a></li>
+                <li ><a href="/ugd/cacmgd/Cacmgd.do">고속버스 운송회사 안내</a></li>
+                <li ><a href="/ugd/cacmgd/CacmgdSale.do">시외노선 할인제도 안내</a></li>
+            </ul>
+        </li>
+        <li >
+            <a href="/cscn/ntcmttr/readNtcList.do">공지사항</a>					
+        </li>
+        <li >
+            <a href="#">고객센터</a>
+            <ul class="depth2">						
+                <li ><a href="/cscn/qna/readQnaList.do">자주하는 질문</a></li>
+                <li ><a href="/cscn/lossClnc/readLossClncList.do">유실물센터 안내</a></li>
+            </ul>
+        </li>
+        <li >
+            <a href="#">전국고속버스운송사업조합</a> <!-- 170123 txt수정 -->
+            <ul class="depth2">
+                <li ><a href="/ugd/bustrop/Bustrop.do">이사장 인사말</a></li>
+                <li ><a href="/ugd/bustrop/BustropHistory.do">연혁</a></li>
+                <li ><a href="/ugd/bustrop/BustropPurpose.do">설립목적 및 사업</a></li>
+                <li ><a href="/ugd/bustrop/BustropGroup.do">조직도</a></li>
+                <li ><a href="/ugd/bustrop/BustropCondition.do">회원사 현황</a></li>
+                <li ><a href="/ugd/bustrop/BustropContactUs.do">찾아오시는 길</a></li>
+            </ul>
+        </li>
+        <li >
+            <a href="#">터미널사업자협회</a>
+            <ul class="depth2">
+                <li ><a href="/ugd/trmlbizr/Trmlbizr.do">협회장 인사말</a></li> <!-- 170123 txt수정 -->
+                <li ><a href="/ugd/trmlbizr/TrmlbizrHistory.do">연혁</a></li>
+                <li ><a href="/ugd/trmlbizr/TrmlbizrPurpose.do">설립목적 및 사업</a></li>
+                <li ><a href="/ugd/trmlbizr/TrmlbizrGroup.do">조직도</a></li>
+                <li ><a href="/ugd/trmlbizr/TrmlbizrContactUs.do">찾아오시는 길</a></li>
+            </ul>
+        </li>
+        <!-- <li>
+            <a href="/mrs/mrsrecplist.do" style="color:red;">구 인터넷 예약 조회</a>
+        </li> -->
+    </ul>
+</div>
+ <!-- 190925 추가 -->
+<div class="app wheel">
+    <a href="/wchr/main.do" target="_blank">
+        <span>휠체어 좌석<br>예매 사이트</span>
+        <p>함께가요!<br>행복여행</p>
+    </a>
+</div>
+<!-- //190925 추가 -->	
+<div class="app">
+    <!-- <a href="http://www.epassmobile.co.kr" target="_blank"> -->
+    <a href="javascript:void(0);">
+        <span>예매부터 탑승까지!</span>
+        <p>고속버스<br>모바일앱</p>
+    </a>
+</div>
+<div class="notice">
+    <ul class="slide_notice" id="noticeView">
+        <li>
+            <p></p>
+            <a href="#">
+                <span class="news ellipsis"></span> <span class="date"></span>
+            </a>
+        </li>
+    </ul>
+    <p class="notice_btns">
+        <span href="#" class="btn prev"></span>
+        <span href="#" class="btn next"></span>
+        <a href="/cscn/ntcmttr/readNtcList.do" class="btn list">목록</a>
+    </p>
+</div>
+</div>
+<div id="gnb" class="gnb_tablet">
+<h1 class="logo"><a href="/main.do">고속버스통합예매</a></h1>
+<a href="#" class="menu_toggle view">메뉴</a>
+<div class="menu">
+    <ul class="depth1">
+        <li class="menu01 "><a href="/mrs/rotinf.do">고속버스예매</a></li>
+        <li class="menu02 ">
+            <a href="#">예매확인</a>
+            <ul class="depth2">
+                <li >
+                    
+                        <a href="/mrs/mrscfmlgnchec.do">예매 확인/취소/변경</a>
+                    
+                    
+                </li>
+                <li ><a href="/mrs/mrsrecplist.do">영수증 발행</a></li>
+            </ul>
+        </li>
+        <li class="menu03 "><a href="#">운행정보</a>
+            <ul class="depth2">
+                <li ><a href="/oprninf/alcninqr/oprnAlcnPage.do">시간표조회</a></li>
+                <li ><a href="/oprninf/arscgd/oprnArscGd.do">도착시간안내</a></li>
+            </ul>
+        </li>
+        
+        
+            <li class="menu04 "><a href="#">고속버스 프리패스/정기권</a>
+                <ul class="depth2">
+                    
+                        <li ><a href="/adtnprdnew/frps/frpsPrchGd.do">프리패스 여행권</a></li>
+                    
+                    
+                    <li ><a href="/adtnprdnew/pass/passPrchGd.do">정기권</a></li>
+                    <li ><a href="/adtnprdnew/prchpt/prdPrchPt.do">상품 구매내역</a></li>
+                </ul>
+            </li>
+        
+        <li class="menu06 " ><a href="#">이용안내</a>
+            <ul class="depth2">
+                <li ><a href="/ugd/mrsgd/Mrsgd.do">예매 안내</a></li>
+                <li ><a href="/ugd/mrsgd/MrdgdPrch.do">결제수단 안내</a></li>
+                <li ><a href="/ugd/rygd/Rygd.do">승차권 환불안내</a></li>
+                <li ><a href="/ugd/mlggd/Mlggd.do">프리미엄 마일리지 안내</a></li>
+                <li ><a href="/ugd/crewgd/Crewgd.do">국민안전 승무원제 안내</a></li>
+                <li ><a href="/ugd/trtrgd/Trtrgd.do">휴게소 환승안내</a></li>
+                <li ><a href="/ugd/trmlgd/Trmlgd.do">고속버스 터미널 안내</a></li>
+                <li ><a href="/ugd/cacmgd/Cacmgd.do">고속버스 운송회사 안내</a></li>
+                <li ><a href="/ugd/cacmgd/CacmgdSale.do">시외노선 할인제도 안내</a></li>
+            </ul>
+        </li>
+        <li class="menu10 "><a href="/cscn/ntcmttr/readNtcList.do">공지사항</a></li>
+        <li class="menu09 "><a href="#">고객센터</a>
+            <ul class="depth2">
+                <li ><a href="/cscn/qna/readQnaList.do">자주하는 질문</a></li>
+                <li ><a href="/cscn/lossClnc/readLossClncList.do">유실물센터 안내</a></li>
+            </ul>
+        </li>
+        <li class="menu07 "><a href="#">전국고속버스운송사업조합</a> <!-- 170123 txt수정 -->
+            <ul class="depth2">
+                <li ><a href="/ugd/bustrop/Bustrop.do">이사장 인사말</a></li>
+                <li ><a href="/ugd/bustrop/BustropHistory.do">연혁</a></li>
+                <li ><a href="/ugd/bustrop/BustropPurpose.do">설립목적 및 사업</a></li>
+                <li ><a href="/ugd/bustrop/BustropGroup.do">조직도</a></li>
+                <li ><a href="/ugd/bustrop/BustropCondition.do">회원사 현황</a></li>
+                <li ><a href="/ugd/bustrop/BustropContactUs.do">찾아오시는 길</a></li>
+            </ul>
+        </li>
+        <li class="menu08 "><a href="#">터미널사업자협회</a>
+            <ul class="depth2">
+                <li ><a href="/ugd/trmlbizr/Trmlbizr.do">협회장 인사말</a></li> <!-- 170123 txt수정 -->
+                <li ><a href="/ugd/trmlbizr/TrmlbizrHistory.do">연혁</a></li>
+                <li ><a href="/ugd/trmlbizr/TrmlbizrPurpose.do">설립목적 및 사업</a></li>
+                <li ><a href="/ugd/trmlbizr/TrmlbizrGroup.do">조직도</a></li>
+                <li ><a href="/ugd/trmlbizr/TrmlbizrContactUs.do">찾아오시는 길</a></li>
+            </ul>
+        </li>
+        <!-- li class="menu02">
+            <a href="/mrs/mrsrecplist.do" style="color:red;">구 인터넷 예약 조회</a>
+        </li> -->
+    </ul>
+</div>
+<div class="app">
+    <a href="http://www.epassmobile.co.kr" target="_blank">고속버스 모바일앱</a>
+</div>
+<div class="notice">
+    <a href="/cscn/ntcmttr/readNtcList.do">공지사항<span class="noti_cnt"></span></a>
+</div>
+</div>
+<div id="gnb" class="gnb_mobile logout
+">
+<h1 class="logo">
+    <a href="/main.do">고속버스통합예매</a>
+    <p class="user_info">
+        <a href="/mbrs/mbrspage/myPageMain.do">
+            <span class="mail"></span>
+            <span class="phone"></span>
+        </a>
+    </p>
+</h1>
+<p class="mo_util">
+    <a href="/mbrs/lgn/loginMain.do" class="out">로그인</a>
+    <a href="/mbrs/lgn/logoutMain.do" class="in">로그아웃</a>
+    <a href="/mbrs/mbrspage/myPageMain.do" class="in">마이페이지</a>
+    <a href="/mbrs/trprinqr/pymPtInqr.do">결제내역조회</a>
+</p>
+<div class="menu">
+    <ul class="depth1">
+        <li class="menu_home"><a href="/main.do">홈</a></li> <!-- 170213 추가 -->
+        <li class="menu01 "><a href="/mrs/rotinf.do">고속버스예매</a></li>
+        <li class="menu02 ">
+            <a href="#">예매확인</a>
+            <ul class="depth2">
+                <li >
+                    
+                        <a href="/mrs/mrscfmlgnchec.do">예매 확인/취소/변경</a>
+                    
+                    
+                </li>
+                <li ><a href="/mrs/mrsrecplist.do">영수증 발행</a></li>
+            </ul>
+        </li>
+        <li class="menu03 "><a href="#">운행정보</a>
+            <ul class="depth2">
+                <li ><a href="/oprninf/alcninqr/oprnAlcnPage.do">시간표조회</a></li>
+                <li ><a href="/oprninf/arscgd/oprnArscGd.do">도착시간안내</a></li>
+            </ul>
+        </li>
+        
+        
+            <li class="menu04 "><a href="#">고속버스 프리패스/정기권</a>
+                <ul class="depth2">
+                    
+                        <li ><a href="/adtnprdnew/frps/frpsPrchGd.do">프리패스 여행권</a></li>
+                    
+                    
+                    <li ><a href="/adtnprdnew/pass/passPrchGd.do">정기권</a></li>
+                    <li ><a href="/adtnprdnew/prchpt/prdPrchPt.do">상품 구매내역</a></li>
+                </ul>
+            </li>
+        
+        <li class="menu06 " ><a href="#">이용안내</a>
+            <ul class="depth2">
+                <li ><a href="/ugd/mrsgd/Mrsgd.do">예매 안내</a></li>
+                <li ><a href="/ugd/mrsgd/MrdgdPrch.do">결제수단 안내</a></li>
+                <li ><a href="/ugd/rygd/Rygd.do">승차권 환불안내</a></li>
+                <li ><a href="/ugd/trtrgd/Trtrgd.do">휴게소 환승안내</a></li>
+                <li ><a href="/ugd/trmlgd/Trmlgd.do">고속버스 터미널 안내</a></li>
+                <li ><a href="/ugd/cacmgd/Cacmgd.do">고속버스 운송회사 안내</a></li>
+                <li ><a href="/ugd/cacmgd/CacmgdSale.do">시외노선 할인제도 안내</a></li>
+            </ul>
+        </li>
+        <li class="menu10 "><a href="/cscn/ntcmttr/readNtcList.do">공지사항</a></li>
+        <li class="menu09 "><a href="#">고객센터</a>
+            <ul class="depth2">
+                <li ><a href="/cscn/qna/readQnaList.do">자주하는 질문</a></li>
+                <li ><a href="/cscn/lossClnc/readLossClncList.do">유실물센터 안내</a></li>
+            </ul>
+        </li>
+        <li class="menu07 "><a href="#">전국고속버스운송사업조합</a> <!-- 170123 txt수정 -->
+            <ul class="depth2">
+                <li ><a href="/ugd/bustrop/Bustrop.do">이사장 인사말</a></li>
+                <li ><a href="/ugd/bustrop/BustropHistory.do">연혁</a></li>
+                <li ><a href="/ugd/bustrop/BustropPurpose.do">설립목적 및 사업</a></li>
+                <li ><a href="/ugd/bustrop/BustropGroup.do">조직도</a></li>
+                <li ><a href="/ugd/bustrop/BustropCondition.do">회원사 현황</a></li>
+                <li ><a href="/ugd/bustrop/BustropContactUs.do">찾아오시는 길</a></li>
+            </ul>
+        </li>
+        <li class="menu08 "><a href="#">터미널사업자협회</a>
+            <ul class="depth2">
+                <li ><a href="/ugd/trmlbizr/Trmlbizr.do">협회장 인사말</a></li> <!-- 170123 txt수정 -->
+                <li ><a href="/ugd/trmlbizr/TrmlbizrHistory.do">연혁</a></li>
+                <li ><a href="/ugd/trmlbizr/TrmlbizrPurpose.do">설립목적 및 사업</a></li>
+                <li ><a href="/ugd/trmlbizr/TrmlbizrGroup.do">조직도</a></li>
+                <!-- <li><a href="#">회원사 현황</a></li> --> <!-- 170123 삭제 -->
+                <li ><a href="/ugd/trmlbizr/TrmlbizrContactUs.do">찾아오시는 길</a></li>
+            </ul>
+        </li>
+        <!-- <li class="menu02">
+            <a href="/mrs/mrsrecplist.do" style="color:red;">구 인터넷 예약 조회</a>
+        </li> -->
+    </ul>
+</div>
+</div>
+<a href="#" class="close">닫기</a> <!-- 170105수정 gnb_mobiel div안에 있던 a태그를 밖으로 뺌 -->
+<!-- // 170109 gnb 수정 -->
+
+<script type="text/javascript">
+//<![CDATA[
+
+
+//]]>
+</script>
+
+
+
+
+
+
+
+<!-- wrap -->
+    <!-- contents -->
+    
+    <div id="contentWrap">
+        <div class="dimmed"></div>
+        <div id="contents">
+            <!-- 170110 수정 -->
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 170110 수정 -->
+<div class="util">
+<ul class="clfix">
+
+    <li class="login"><a href="/mbrs/lgn/loginMain.do"><span>로그인</span></a></li>
+
+
+
+    <li><a href="/mbrs/mbrsjoin/mbrsJoin.do">회원가입</a></li>
+
+<li><a href="/mbrs/mbrspage/myPageMain.do">마이페이지</a></li>
+<li><a href="/mbrs/trprinqr/pymPtInqr.do">결제내역조회</a></li>
+<li><a href="/etc/sitemap/SiteMap.do">사이트맵</a></li>
+</ul>
+<!-- 170209 다국어선택 select수정 -->
+<div class="select-box">
+<select name="lng_cd_navi" id="lng_cd_navi" title="다국어사이트 선택">
+    <option value="KO" selected="selected">한국어</option>
+    <option value="EN">English</option>
+    <option value="CN">中文</option>
+    <option value="JP">日本語</option>
+</select>
+</div>
+<!-- //170209 다국어선택 select수정 -->
+</div>
+
+
+
+
+
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/kor/main/Main.js"></script>
+
+<script type="text/javascript" src="/js/common/kor/popup/RotInfPup.js"></script>
+<script type="text/javascript" src="/js/kor/mrs/rotinf/RotInf.js?v=1.13"></script>
+<script type="text/javascript" src="/js/kor/mrs/mrscfm/MrsCfmLgn.js"></script>
+
+<!-- 20200617 yahan -->
+<script type="text/javascript" src="/transkey/transkey.js?v=0.1"></script>
+<link rel="stylesheet" type="text/css" href="/transkey/transkey.css" /> 
+<script>
+$(function(){ initTranskey(); })
+</script>
+
+
+
+
+<!-- 부모페이지에 아래의 hidden 필드를 선언해주어야 한다. 참고 : RotInf.jsp-->
+
+<!-- 출/도착지 선택 레이어팝업 -->
+<div class="remodal pop_place full" data-remodal-id="popPlace" role="dialog">
+    <div class="title">
+        출/도착지 선택
+        <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+    </div>
+    <div class="cont">
+        <div class="place"> <!-- focus -->
+            <ul>
+                <li id="popDeprChc"> <!--  class="focuson" -->
+                    <span class="stit">출발지</span>
+                    <p class="text"><span class="empty_txt">선택</span><span class="val_txt" id="popDeprNmSpn"></span></p>
+                </li>
+                <li id="popArvlChc">
+                    <span class="stit">도착지</span>
+                    <p class="text"><span class="empty_txt">선택</span><span class="val_txt" id="popArvlNmSpn"></span></p>
+                </li>
+            </ul>
+            <p class="btn_change">출,도착지 교체</p>
+        </div>
+        <div class="search_wrap">
+            <p> <!--  class="focus" -->
+                <input type="text" id="terminalSearch" title="터미널/지역 이름 검색" placeholder="터미널/지역 이름을 검색하세요"><span class="btn">검색</span>
+            </p>
+        </div>
+        <div class="start_wrap" id="imptDepr">
+            <p class="stit">주요출발지</p>
+            <p class="tags">
+                <span onclick="fnDeprChc('010','서울경부')"         name="imptDeprNm" value="010">서울경부</span>
+                <span onclick="fnDeprChc('020','센트럴시티(서울)')" name="imptDeprNm" value="020" class="over">센트럴시티(서울)</span>
+                <span onclick="fnDeprChc('500','광주(유·스퀘어)')" name="imptDeprNm" value="500" >광주(유·스퀘어)</span> <!--  class="active" -->
+                <span onclick="fnDeprChc('700','부산')"             name="imptDeprNm" value="700" >부산</span>
+                <span onclick="fnDeprChc('703','부산사상')"         name="imptDeprNm" value="703" >부산사상</span>
+                <span onclick="fnDeprChc('032','동서울')"           name="imptDeprNm" value="032" >동서울</span>
+                <span onclick="fnDeprChc('300','대전복합')"         name="imptDeprNm" value="300" >대전복합</span>
+                <span onclick="fnDeprChc('602','전주')"             name="imptDeprNm" value="602" >전주</span>
+                <span onclick="fnDeprChc('360','유성')"             name="imptDeprNm" value="360" >유성</span>
+                <span onclick="fnDeprChc('310','천안')"             name="imptDeprNm" value="310" >천안</span>
+                <span onclick="fnDeprChc('801','동대구')"           name="imptDeprNm" value="801" >동대구</span>
+            </p>
+        </div>
+        <div class="terminal_wrap">
+            <p class="stit">지역별 터미널</p>
+            <div class="ternimal_box">
+                <div class="area_scroll scrollbar-inner">
+                    <ul class="area_list">
+                        <li class="active" id="areaListAll"><span onclick="fnDeprArvlViewList('all');">전체</span></li>
+                        <li><span onclick="fnDeprArvlViewList('11');">서울</span></li>
+                        <li><span onclick="fnDeprArvlViewList('28');">인천/경기</span></li>
+                        <li><span onclick="fnDeprArvlViewList('42');">강원</span></li>
+                        <li><span onclick="fnDeprArvlViewList('30');">대전/충남</span></li>
+                        <li><span onclick="fnDeprArvlViewList('43');">충북</span></li>
+                        <li><span onclick="fnDeprArvlViewList('29');">광주/전남</span></li>
+                        <li><span onclick="fnDeprArvlViewList('45');">전북</span></li>
+                        <li><span onclick="fnDeprArvlViewList('26');">부산/경남</span></li>
+                        <li><span onclick="fnDeprArvlViewList('27');">대구/경북</span></li>
+                    </ul>
+                </div>
+                <div class="terminal_list" id="terminalList">
+                    <div class="terminal_scroll scrollbar-inner">
+                        <ul class="clear" id="tableTrmList"><!--  출발지 터미널 --></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     <div class="btns">
+        <!-- <button data-remodal-action="confirm" class="remodal-confirm ready" id="cfmBtn" onclick="fncfmBtnChc()">선택완료</button> 버튼활성화시 'ready' class가 없음 -->
+    </div>
+</div>
+
+<form name="rotInfFrm" id="rotInfFrm" method="post" action="/mrs/alcnSrch.do">
+<input type="hidden" name="deprCd"         id="deprCd"         value="" /><!-- 출발지코드 -->
+<input type="hidden" name="deprNm"         id="deprNm"         value="" /><!-- 출발지명 -->
+<input type="hidden" name="arvlCd"         id="arvlCd"         value="" /><!-- 도착지코드 -->
+<input type="hidden" name="arvlNm"         id="arvlNm"         value="" /><!-- 도착지명 -->
+<input type="hidden" name="tfrCd"          id="tfrCd"          value="" /><!-- 환승지코드 -->
+<input type="hidden" name="tfrNm"          id="tfrNm"          value="" /><!-- 환승지명 -->
+<input type="hidden" name="tfrArvlFullNm"  id="tfrArvlFullNm"  value="" /><!-- 환승지포함 도착지 명 -->
+<input type="hidden" name="pathDvs"        id="pathDvs"        value="" /><!-- 직통sngl,환승trtr,왕복rtrp -->
+<input type="hidden" name="pathStep"       id="pathStep"       value="1" /><!-- 왕복,환승 가는편순번 -->
+<input type="hidden" name="crchDeprArvlYn" id="crchDeprArvlYn" value="N" /><!-- 출도착지 스왑여부 -->
+<input type="hidden" name="deprDtm"        id="deprDtm"        value="" /><!-- 가는날(편도,왕복) -->
+<input type="hidden" name="deprDtmAll"     id="deprDtmAll"     value="" /><!-- 가는날(편도,왕복) -->
+<input type="hidden" name="arvlDtm"        id="arvlDtm"        value="" /><!-- 오는날(왕복) -->
+<input type="hidden" name="arvlDtmAll"     id="arvlDtmAll"     value="" /><!-- 오는날(왕복) -->
+<input type="hidden" name="busClsCd"       id="busClsCd"       value="" /><!-- 버스등급 -->
+<input type="hidden" name="abnrData"       id="abnrData"       value="" /><!-- 결과값여부 -->
+<input type="hidden" name="prmmDcYn"       id="prmmDcYn"       value="N" /><!-- 시외우등할인대상노선 -->
+</form>
+<input type="hidden" name="mainYn" id="mainYn" value="Y"/>
+<!-- // 170110 수정 -->
+<div class="loading" id="loading"><p class="load"></p></div>	
+<!-- pc/tablet -->
+<div class="main_box clfix">
+<h2>즐거운 여행의 시작과 끝, 프리미엄 버스와 함께!</h2>
+<p class="main_tab">
+    <a href="#" class="tab1 on"><span>고속버스예매</span></a>
+    <a href="#" class="tab2"><span>예매확인</span>
+        
+    </a>
+    <a href="#" class="tab3"><span>도착시간안내</span></a>
+    <a href="#" class="freepass" onclick="fnGoFreepass();"><span>프리패스</span></a> <!-- 20190509 추가 -->
+    <a href="#" class="wheelchair" onclick="fnGoWheel();"><span>휠체어사이트</span></a> <!-- 20190920 추가 -->
+</p>
+<div class="main_cont">
+    <div class="route_box">
+        <div class="tab_wrap tab_type1" id="rtrpYnAll">
+            <ul class="tabs col2">
+                <li class="oneway" id="snglRotAll">
+                    <a href="#" onclick="fnPathDvsChk('snglRot');">편도</a>
+                    <p class="radio_area">
+                            <span class="custom_radio" onclick="fnPathDvsChk('sngl')">
+                                <input type="radio" id="r1" name="route" checked="checked">
+                                <label for="r1">직통</label>
+                            </span>
+                            <span class="custom_radio" onclick="fnPathDvsChk('trtr')">
+                                <input type="radio" id="r2" name="route">
+                                <label for="r2">환승</label>
+                            </span>
+                        </p>
+                </li>
+                <li class="roundtrip" id="rtrpRotAll"><a href="#" onclick="fnPathDvsChk('rtrp')">왕복</a></li>
+            </ul>
+             <div class="tab_cont">
+                <ul class="place">
+                    <li>
+                            <a href="#" id="readDeprInfoList" onclick="fnReadDeprInfoList(event);">
+                            <span class="name">출발지</span>
+                            <p class="text empty"><span class="empty_txt">선택</span><span class="val_txt" id="deprNmSpn"></span></p> <!-- 값이 있을경우 'empty' class가 없음 -->
+                        </a>
+                            <p class="btn_change" onclick="fnCrchDeprArvl();" id="chgDeprArvl">출,도착지 교체</p>
+                    </li>
+                    <li>
+                            <a href="#" id="readArvlInfoList" onclick="fnReadArvlInfoList(event);">
+                            <span class="name">도착지</span>
+                                <p class="text empty"><span class="empty_txt">선택</span><span class="val_txt" id="arvlNmSpn"></span></p>  <!-- 값이 없을경우 'empty' class가 있음 -->
+                        </a>
+                    </li>
+                </ul>
+                <ul class="date">
+                    <li>
+                        <div class="date_picker_wrap">
+                            <span class="name">가는날</span>
+                                <p class="text"><span class="text_date text_date1"></span><input type="text" id="datepicker1" readonly></p>
+                                <span class="date_wrap">
+                                    <a href="#" id="deprThddChc" class="active" onclick="fnYyDtmStup(0,'text_date1','0');">오늘</a>
+                                    <a href="#" id="deprNxdChc" onclick="fnYyDtmStup(1,'text_date1','0');">내일</a>
+                                </span>
+                        </div>
+                    </li>
+                    <li class="return">
+                        <div class="date_picker_wrap">
+                            <span class="name">오는날</span>
+                            <p class="text"><span class="text_date text_date2"></span><input type="text" id="datepicker2" readonly></p>
+                                <span class="date_wrap">
+                                    <a href="#" id="arvlThddChc" class="active" onclick="fnYyDtmStup(0,'text_date2','0');">오늘</a>
+                                    <a href="#" id="arvlNxdChc" onclick="fnYyDtmStup(1,'text_date2','0');">내일</a>
+                                </span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="grade">
+                    <span class="name">등급</span>
+                    <p>
+                        <span class="custom_radio gradeAll">
+                                <input type="radio" id="busClsCd0" name="busClsCdR"  onclick ="fnBusClsCd(this)" value="0" />
+                                <label for="busClsCd0">전체</label>
+                        </span>
+                        <span class="custom_radio grade1">
+                                <input type="radio" id="busClsCd7" name="busClsCdR" onclick ="fnBusClsCd(this)" value="7" />
+                                <label for="busClsCd7">프리미엄</label>
+                        </span>
+                        <span class="custom_radio grade2">
+                                <input type="radio" id="busClsCd1" name="busClsCdR" onclick ="fnBusClsCd(this)" value="1" />
+                                <label for="busClsCd1">우등</label>
+                        </span>
+                        <span class="custom_radio grade3">
+                                <input type="radio" id="busClsCd5" name="busClsCdR" onclick ="fnBusClsCd(this)" value="2" />
+                                <label for="busClsCd5">일반</label>
+                        </span>
+                    </p>
+                </div>
+                    <p class="check" id="alcnSrchBtn">
+                        <button type="button" class="btn_confirm ready" onclick="fnAlcnSrchBef();">조회하기</button>
+                </p>
+             </div>
+        </div>
+    </div>
+</div>
+<div class="main_cont ticket_slide_wrap ">
+    <!-- 로그인 -->
+    
+    <div class="ticket_login_wrap">
+        <div class="ticket_login custom_input clfix">
+            <form id="lgnFrm" name="lgnFrm">
+                <input type="hidden" id="returnUrl" name="returnUrl" value="/mrs/mrscfm.do?vltlCnt=Y">
+                <input type="hidden" id="popUpDvs" name="popUpDvs" value="N">
+                <div class="member">
+                    <div class="login_title clfix tooltip_wrap">
+                        <h3>회원 로그인</h3>
+                        <a href="#" class="main_tip">회원 로그인 안내</a>
+                        <div class="tooltip">
+                            <p class="tit">회원 로그인 안내</p>						
+                            <span>고속버스 통합 예매 홈페이지는 고속버스모바일APP의 회원 아이디와 비밀번호로 이용이 가능합니다.</span>
+                            <a href="#" class="close">닫기</a>
+                        </div>
+                    </div>
+                    <div class="box_inputForm">
+                        <strong>아이디</strong>
+                        <span class="box_label">
+                            <label for="usrId">아이디를 입력하세요</label>
+                            <input type="text" name="usrId" id="usrId" class="input">
+                        </span>
+                    </div>
+                    <div class="box_inputForm">
+                        <strong>비밀번호</strong>
+                        <span class="box_label">
+                            <label for="usrPwd">비밀번호를 입력하세요</label>
+                            <input type="password" name="usrPwd" id="usrPwd" class="input" onkeydown="fnUsrSubmit();" data-tk-kbdType="qwerty" onfocus="tk.onKeyboard(this);">
+                        </span>
+                    </div>
+                    
+                    <!-- 20200617 yahan -->
+                    <p>
+                        <span id="usrPwd_tk_btn"  style="padding:5px 20px; color:#fff"><b>마우스로 입력</b></span>
+                    </p>
+                    
+                    
+                    <button type="button" class="btnL btn_confirm ready" id="usrLgnBtn" onclick="fnlogin();">로그인</button>
+                </div>
+            </form>
+            <form id="lgnNonUsrFrm" name="lgnNonUsrFrm">
+                <input type="hidden" id="returnUrl" name="returnUrl" value="/mrs/mrscfm.do?vltlCnt=Y">
+                <input type="hidden" id="popUpDvs" name="popUpDvs" value="N">
+                <div class="no_member">
+                    <div class="login_title clfix tooltip_wrap">
+                        <h3>비회원 예매확인</h3>
+                        <a href="#" class="main_tip">비회원 예매확인 안내</a>
+                        <div class="tooltip">
+                            <p class="tit">비회원 예매확인 안내</p>						
+                            <span>예매 시 입력하신 정보를 정확하게 입력해주세요.</span>
+                            <a href="#" class="close">닫기</a>
+                        </div>
+                    </div>
+                    <div class="box_inputForm">
+                        <strong>휴대폰 번호</strong>
+                        <span class="box_label">
+                            <label for="nombrsid">휴대폰번호를 입력하세요</label>
+                            <input type="text" name="nombrsid" id="nombrsid" class="input"  onkeyup="fnNumCheck();">
+                        </span>
+                    </div>
+                    <div class="box_inputForm">
+                        <strong>비밀번호</strong>
+                        <span class="box_label">
+                            <label for="nombrspass">비밀번호를 입력하세요</label>
+                            <input type="password" name="nombrspass" id="nombrspass" class="input" onkeyup="fnPassNumCheck();" onkeydown="fnNonUsrSubmit();" data-tk-kbdType="number" onfocus="tk.onKeyboard(this);">
+                        </span>
+                    </div>
+                    
+                    <!-- 20200617 yahan -->
+                    <p>
+                        <span id="nombrspass_tk_btn"  style="padding:5px 20px; color:#fff"><b>마우스로 입력</b></span>
+                    </p>
+                    
+                    <button type="button" class="btnL btn_confirm ready" id="nonUsrLgnBtn" onclick="NonUsrInsert();">조회하기</button>
+                </div>
+            </form>
+        </div>
+        <p class="login_menu">
+            <a href="/mbrs/lgn/lgnSearchId.do">아이디 찾기</a>
+            <a href="/mbrs/lgn/lgnSearchPwd.do">비밀번호찾기</a>
+            <a href="/mbrs/mbrsjoin/mbrsJoin.do">회원가입</a>
+        </p>
+    </div>
+    
+    <!-- // 로그인 -->
+        
+    </div>
+        <div class="main_cont arrivetime_info">					
+            <p>운행중인 고속버스의 도착시간을 안내해드립니다.</p>
+            <span>안내를 원하시는 노선을 선택하시고 <br>버스의 현재 위치와 도착예정시간을 확인해보세요.</span>					
+            <p class="btns">
+                <a href="/oprninf/arscgd/oprnArscGd.do" class="btnL btn_confirm">도착시간 안내</a>
+            </p>
+        </div>
+    </div>
+    <!-- pc/tablet -->
+
+    <!-- mobile -->
+    <div class="mo_menu_wrap">
+        <div class="mo_menu">
+            <ul>
+                <li class="menu1"><a href="/mrs/rotinf.do">고속버스 예매</a></li>
+                
+                    <li class="menu2"><a href="/mrs/mrscfmlgnchec.do">예매 확인
+                    
+                    </a></li>
+                
+                
+                <li class="menu3"><a href="/oprninf/arscgd/oprnArscGd.do">도착시간안내</a></li>
+            </ul>
+        </div>
+        <p class="mo_util">
+            <a href="/oprninf/alcninqr/oprnAlcnPage.do" class="util1">시간표조회</a>
+            <a href="/ugd/mrsgd/Mrsgd.do" class="util2">이용안내</a>
+            <a href="/cscn/ntcmttr/readNtcList.do" class="util3">고객센터</a>
+            <a href="/mbrs/mbrspage/myPageMain.do" class="util4">마이페이지</a>
+        </p>
+    </div>
+    <!-- //mobile -->
+
+
+
+
+    
+    
+    
+    
+
+
+
+
+    
+    
+    
+
+
+
+
+    
+    
+    
+
+
+
+        
+<div class="bnr_box bnr3">		
+<div class="main_bus">
+    <a href="#" >
+        
+            
+                <span class="stit">프리미엄 골드 익스프레스</span>
+                <p>도로 위 비즈니스 클래스 프리미엄 고속버스<span class="block"></span></p>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </a>
+</div>
+<div class="main_molit" >
+    <a href="https://www.zerodayexpress.com" target="_blank">
+        
+            
+        
+            
+        
+            
+                <span class="stit">ZERODAY EXPRESS</span>
+                <p>고속버스 당일배송 온라인 택배신청<span class="block"></span></p>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </a>
+</div>
+<div class="main_app">
+    <a href="https://www.shinhancard.com/conts/person/card_info/dream/credit/oil/1413166_46596.jsp?EntryLoc1=TM2876&EntryLoc2=2867&empSeq=4" target="_blank">
+        
+            
+        
+            
+                <span class="stit">All Pass 신한카드 출시</span>
+                <p>고속/시외버스 앱 결제시 30% 할인<span class="block"></span></p>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </a>
+</div>
+
+<div class="main_info">
+    <span class="stit">이용안내</span>
+    <ul class="clifx">
+        <li class="info1"><a href="/ugd/mrsgd/Mrsgd.do">예매안내</a></li>
+        <li class="info2"><a href="/ugd/trtrgd/Trtrgd.do">환승안내</a></li>
+        <li class="info4"><a href="/ugd/trmlgd/Trmlgd.do">터미널안내</a></li>
+        <li class="info3"><a href="/ugd/cacmgd/CacmgdSale.do">할인안내</a></li>
+    </ul>
+</div>
+</div>
+
+<!-- 취소수수료안내 팝업 -->
+<div class="remodal pop_fee" data-remodal-id="popFee" role="dialog">
+<div class="title">
+취소수수료 안내
+<button type="button" data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+</div>
+<div class="cont">
+<div class="tbl_type1">
+    <table>
+        <caption>취소수수료 안내</caption>
+        <colgroup>
+            <col style="width: 70%;">
+            <col style="width: 30%;">
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col">취소시기</th>
+                <th scope="col">수수료</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>예매 당일 또는 승차일 2일전 취소<br>(단, 당일출발차량 예매 후 1시간 이후 취소는 수수료 발생)</td>
+                <td>없음</td>
+            </tr>
+            <tr>
+                <td>예매 후 출발일 1일 전일부터 지정차 출발 1시간 전 취소<br>(단, 당일출발차량 예매 후 1시간 이내 취소는 수수료 없음)</td>
+                <td>승차권 요금의5%</td>
+            </tr>
+            <tr>
+                <td>예매 후 지정차 출발 1시간 이내 취소<br>(단, 당일출발차량 예매 후 1시간 이내 취소는 수수료 없음)</td>
+                <td>승차권 요금의10%</td>
+            </tr>
+            <tr>
+                <td>예매하신 지정차 출발 후 목적지 도착예정시간 전 취소</td>
+                <td>승차권 요금의30%</td>
+            </tr>
+            <tr>
+                <td>마일리지 구매 승차권 : 출발시간 이전 취소</td>
+                <td>마일리지 100% 환원</td>
+            </tr>
+            <tr>
+                <td>마일리지 구매 승차권 : 출발시간 이후 취소</td>
+                <td>마일리지 100% 차감</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<ul class="desc_list">
+    <li>당일출발 차량의 경우 출발시간 1시간 전까지 홈페이지 예매가 가능하며 1시간 미만 출발임박 차량의 예매를 원하시면 <span class="txt_puple">[고속버스 모바일앱]</span>에서 예매하시기 바랍니다.</li>
+    <li>1회 최대 예매 매수는 6매입니다.(일부 시외우등 노선에 한정하여 10매까지 예매가능)</li>
+    <li>일반고속 청소년(중, 고등학생) 할인은 터미널 현장에서 학생증 및 청소년증을 제시 해야만 할인이 적용되며 탑승 시 소지가 꼭 필요합니다.</li>
+    <li>할인 승차권 부정 사용 시 운임의 10배 부가운임을 요구할 수 있습니다.</li>
+    <li>사용하지 않은 모든 승차권은 지정차 출발 후 도착예정시간이 지나면 환불하실 수 없습니다.</li>
+    <li>취소수수료 산정은 날짜를 기준(시간 기준이 아님)으로 합니다.</li>
+    <li>홈페이지 예매 후 창구에서 발권 시 예매에 사용한 신용카드를 반드시 지참하셔야 합니다.</li>
+</ul>
+</div>
+<div class="btns">
+<a href="" data-remodal-action="cancel" class="remodal-cancel" >취소</a>
+<a href="" data-remodal-action="confirm" class="remodal-confirm" onclick="fnPopFeeAgrm();">동의</a>
+</div>
+</div>
+
+
+<!-- // 공지팝업 -->
+<input type="hidden" id="pupListLen" name="pupListLen" value="3" /> 
+<div class="pop_dimmed"></div>	
+<div class="noti_pop_wrap">
+
+
+
+
+    
+
+    
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+    
+
+    
+
+    
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+    
+
+    
+
+    
+
+    
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+</div>
+<!-- // 공지팝업 -->
+
+
+<!-- 시외노선 우등형 할인 안내 -->
+<div id="ctyPrmmDcInf" class="remodal pop_gradeinfo" data-remodal-id="popGradeinfo" role="dialog"> <!--  -->
+<div class="title">
+시외노선 우등형 할인 안내
+<button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+</div>
+<div class="cont">
+<p class="tbl_desc">예매하시려는 노선은 우등 형 할인혜택이 제공되는 시외노선입니다.<br>우등등급에 한정하여 예매 시 할인이 제공되며 상세조건은 아래와 같습니다.</p>
+<div class="tbl_type1">
+    <table>
+        <caption>시외노선 우등형 할인 안내</caption>
+        <colgroup>
+            <col style="width: 15%;">
+            <col style="width: auto">
+            <col style="width: 30%;">
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col">구분</th>
+                <th scope="col">내용</th>
+                <th scope="col">할인율</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">사전예매</th>
+                <td>
+                    <ul class="desc_list">
+                        <li>차량 출발일 2일(48시간) 전까지 예매한 경우</li>
+                        <li>최대 예매 승차권수는 10매로 제한</li>
+                    </ul>
+                </td>
+                <td><span class="accent show_mo">할인율 : </span>우등버스 정상요금의 10%</td>
+            </tr>
+            <tr>
+                <th scope="row">단체예매</th>
+                <td>
+                    <ul class="desc_list">
+                        <li>단체승객(5인 이상 10인 이하)이 승차권을 사전 예매한 경우</li>
+                        <li>최대 예매 승차권수는 10매로 제한</li>
+                    </ul>
+                </td>
+                <td><span class="accent show_mo">할인율 : </span>우등버스 정상요금의 10%</td>
+            </tr>
+            <tr>
+                <th scope="row">왕복예매</th>
+                <td>
+                    <ul class="desc_list">
+                        <li>동일 노선/구간의  왕복 승차권을 예매한 경우</li>
+                        <li>왕복 각각 동일한 할인율을 적용</li>
+                        <li>최대 예매 승차권수는 10매로 제한</li>
+                    </ul>
+                </td>
+                <td><span class="accent show_mo">할인율 : </span>우등버스 정상요금의 10%<span class="line_block">(편도 각 10%)</span></td>
+            </tr>
+            
+            
+            
+        </tbody>
+    </table>
+</div>
+<ul class="desc_list">
+    <li>할인혜택은 성인 승차권 예매 기준입니다. (아동/중고생은 제외)</li>
+    <li>사전에 홈페이지와 모바일앱 예매를 이용한 승객에게만 적용됩니다.(터미널 현장 발권은 대상제외. 단, 뒷좌석 예매는 예외)</li>
+    <li>명절 연휴 특송기간(설, 추석 등)은 할인이 적용되지 않습니다.</li>
+    <li>할인 적용된 우등버스 요금이 일반ㆍ직행 버스 요금보다 낮을 경우, 일반ㆍ직행 버스 요금을 적용하게 됩니다.</li>
+    <li>왕복할인/단체할인을 적용하여 홈페이지 예매 완료 시 매수변경이 불가하니 유의하시기 바랍니다.</li>
+    <li>할인 적용 시에는 신용카드결제만 가능합니다.</li>
+</ul>
+</div>
+<div class="btns">
+<button data-remodal-action="cancel" class="remodal-cancel">취소</button>
+<button class="remodal-confirm" data-remodal-action="confirm" onclick="fnRotAdPopup();">예매진행</button>
+</div>
+</div>
+
+
+<!-- 노선조회안내 팝업 - 서울~강릉 - 190227 추가 -->
+<div class="remodal pop_route" data-remodal-id="popRoute1" role="dialog">
+<div class="title">
+노선조회안내
+<button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+</div>
+<div class="cont">
+<ul class="txt">
+    <li><strong>1. 요금할인</strong>
+        <ul class="desc_list">
+            <li>요금인상 없이 종전 요금 이용</li>
+        </ul>
+    </li>
+    <li><strong>2. 제휴할인 서비스</strong>
+        <ul class="desc_list">
+            <li>강릉지역 렌터카 및 맛집, 카페 등 이용할인</li>
+            <li><a href="https://www.kobus.co.kr/cscn/ntcmttr/readNtc.do?ntcNo=20190226001" title="새창열림" target="_blank" class="accent">이용방법 및 업체 상세보기 &gt;</a></li>
+        </ul>
+    </li>
+    <li><strong>3. 프리미엄 버스 확대 운행</strong>
+        <ul class="desc_list">
+            <li>평균 18% 할인된 금액으로 상시 이용 가능</li>
+            <li>주말 이용 시 마일리지 미 적립</li>
+        </ul>
+    </li>
+</ul>
+</div>
+<div class="btns">
+<button data-remodal-action="confirm" class="remodal-confirm" onclick="fnRotVldChc();">확인</button>
+</div>
+</div>
+<!-- 노선조회안내 팝업 - 동서울~강릉 - 190227 추가 -->
+<div class="remodal pop_route" data-remodal-id="popRoute2" role="dialog">
+<div class="title">
+노선조회안내
+<button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+</div>
+<div class="cont">
+<ul class="txt">
+    <li><strong>1. 요금 변경 안내</strong>
+        <ul class="desc_list">
+            <li>2020년 7월 10일부터 변경된 할인율 적용</li>
+        </ul>
+    </li>
+<!-- 			<li><strong>1. 요금할인</strong> -->
+<!-- 				<ul class="desc_list"> -->
+<!-- 					<li>평균 25% 요금할인으로 이용</li> -->
+<!-- 				</ul> -->
+<!-- 			</li> -->
+    <li><strong>2. 제휴할인 서비스</strong>
+        <ul class="desc_list">
+            <li>강릉지역 렌터카 및 맛집, 카페 등 이용할인</li>
+            <li><a href="https://www.kobus.co.kr/cscn/ntcmttr/readNtc.do?ntcNo=20190226001" title="새창열림" target="_blank" class="accent">이용방법 및 업체 상세보기 &gt;</a></li>
+        </ul>
+    </li>
+</ul>
+</div>
+<div class="btns">
+<button data-remodal-action="confirm" class="remodal-confirm" onclick="fnRotVldChc();">확인</button>
+</div>
+</div>
+<!-- 노선조회안내 팝업 - 수원~삼척 - 190227 추가 -->
+<div class="remodal pop_route" data-remodal-id="popRoute3" role="dialog">
+<div class="title">
+노선조회안내
+<button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+</div>
+<div class="cont">
+<ul class="txt">
+    <li><strong>제휴할인 서비스</strong>
+        <ul class="desc_list">
+            <li><span id="arvlNmSpan3"></span>지역 렌터카 이용할인</li>
+            <li><a href="https://www.kobus.co.kr/cscn/ntcmttr/readNtc.do?ntcNo=20190226001" title="새창열림" target="_blank" class="accent">이용방법 및 업체 상세보기 &gt;</a></li>
+        </ul>
+    </li>
+</ul>
+</div>
+<div class="btns">
+<button data-remodal-action="confirm" class="remodal-confirm" onclick="fnRotVldChc();">확인</button>
+</div>
+</div>
+<!-- 노선조회안내 팝업 - 서울경부~동해 - 190227 추가 -->
+<div class="remodal pop_route" data-remodal-id="popRoute4" role="dialog">
+<div class="title">
+노선조회안내
+<button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+</div>
+<div class="cont">
+<ul class="txt">
+    <li><strong>1. 프리미엄 버스 운행 개시</strong>
+        <ul class="desc_list">
+            <li>최고급 버스를 15% 할인된 금액으로 상시 이용 가능</li>
+            <li>주말 이용 시 마일리지 미적립</li>
+        </ul>
+    </li>
+    <li><strong>2. 제휴할인 서비스</strong>
+        <ul class="desc_list">
+            <li><span id="arvlNmSpan4"></span>지역 렌터카 이용할인</li>
+            <li><a href="https://www.kobus.co.kr/cscn/ntcmttr/readNtc.do?ntcNo=20190226001" title="새창열림" target="_blank" class="accent">이용방법 및 업체 상세보기 &gt;</a></li>
+        </ul>
+    </li>
+</ul>
+</div>
+<div class="btns">
+<button data-remodal-action="confirm" class="remodal-confirm" onclick="fnRotVldChc();">확인</button>
+</div>
+</div>
+<!-- 노선조회안내 팝업 속초 - 190227 추가 -->
+<div class="remodal pop_route" data-remodal-id="popRoute5" role="dialog">
+<div class="title">
+노선조회안내
+<button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+</div>
+<div class="cont">
+<ul class="txt">
+    <li><strong>제휴할인 서비스</strong>
+        <ul class="desc_list">
+            <li>속초지역 렌터카 및 맛집, 카페 등 이용할인</li>
+            <li><a href="https://www.kobus.co.kr/cscn/ntcmttr/readNtc.do?ntcNo=20190226001" title="새창열림" target="_blank" class="accent">이용방법 및 업체 상세보기 &gt;</a></li>
+        </ul>
+    </li>
+</ul>
+</div>
+<div class="btns">
+<button data-remodal-action="confirm" class="remodal-confirm" onclick="fnRotVldChc();">확인</button>
+</div>
+</div>
+
+<!-- 노선조회안내 팝업 원주 - 190926 추가 -->
+<div class="remodal pop_route" data-remodal-id="popRoute6" role="dialog">
+<div class="title">
+제휴할인 서비스
+<button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+</div>
+<div class="cont">
+<ul class="txt">
+    <li><strong>제휴할인 서비스</strong>
+        <ul class="desc_list">
+            <li>원주지역 렌터카 및 영화, 식당 등 이용할인</li>
+            <li><a href="https://www.kobus.co.kr/cscn/ntcmttr/readNtc.do?ntcNo=20190226001" title="새창열림" target="_blank" class="accent">이용방법 및 업체 상세보기 &gt;</a></li>
+        </ul>
+    </li>
+</ul>
+</div>
+<div class="btns">
+<button data-remodal-action="confirm" class="remodal-confirm" onclick="fnRotVldChc();">확인</button>
+</div>
+</div>
+
+<!-- 광양 임시터미널 안내 - 191031 추가 -->
+<div class="remodal pop_route" data-remodal-id="popTmpTml" role="dialog">
+<div class="title">
+광양 임시터미널 안내
+<button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+</div>
+<div class="cont">
+<ul class="txt">
+    <li>
+        <strong>광양 임시터미널(인동숲 주차장) 안내</strong>
+        <p style="margin-top:10px;"><img src="/images/page/pop_img01.png" width="640"></p>
+    </li>
+    <li><strong>광양 임시터미널 승차홈</strong>
+        <p><img src="/images/page/pop_img02.png" width="640"></p>
+    </li>
+</ul>
+</div>
+<div class="btns">
+<button data-remodal-action="confirm" class="remodal-confirm" onclick="fnRotVldChc();">확인</button>
+</div>
+</div>
+        </div>
+        
+            
+                
+<div id="footer">
+<script type="text/javascript">
+if (/ip(hone|od)/i.test(navigator.userAgent)) {
+    $(document).ready(function() {
+        $('.family_site.select-box').addClass('iphone');
+        $('.family_site.select-box select').selectric({
+            disableOnMobile: false
+        });
+    });
+}
+function familySite(obj){
+    if (obj.value != "") {
+        window.open("http://" + obj.value,"","");				
+    }
+}
+</script>
+<div class="foot_top clfix">
+<ul class="foot_slide mo_show">
+    <li><a href="http://www.kumhobuslines.co.kr" target="_blank"><img src="/images/common/foot1.png" alt="금호고속"></a></li>
+    <li><a href="http://www.songnisanbuslines.co.kr" target="_blank"><img src="/images/common/foot5.png" alt="금호속리산고속"></a></li>
+    <li><a href="http://www.dongbubus.com" target="_blank"><img src="/images/common/foot3.png" alt="Dongbu Express"></a></li>
+    <li><a href="http://www.dyexpress.co.kr" target="_blank"><img src="/images/common/foot6.png" alt="동양고속"></a></li>
+    <li><a href="http://www.samhwaexpress.co.kr" target="_blank"><img src="/images/common/foot2.png" alt="SAMHWA"></a></li>
+    <li><a href="http://www.jabus.co.kr" target="_blank"><img src="/images/common/foot7.png" alt="중앙고속"></a></li>
+    <li><a href="http://www.chunilexpress.co.kr" target="_blank"><img src="/images/common/foot8.png" alt="CHUNIL EXPRESS"></a></li>
+    <li><a href="http://www.hanilexpress.co.kr" target="_blank"><img src="/images/common/foot4.png" alt="한일고속"></a></li>
+</ul>
+<ul class="foot_slide mo_hide">
+    <li><a href="http://www.kumhobuslines.co.kr" target="_blank"><img src="/images/common/foot1_s.png" alt="금호고속"></a></li>
+    <li><a href="http://www.songnisanbuslines.co.kr" target="_blank"><img src="/images/common/foot5_s.png" alt="금호속리산고속"></a></li>
+    <li><a href="http://www.dongbubus.com" target="_blank"><img src="/images/common/foot3_s.png" alt="Dongbu Express"></a></li>
+    <li><a href="http://www.dyexpress.co.kr" target="_blank"><img src="/images/common/foot6_s.png" alt="동양고속"></a></li>
+    <li><a href="http://www.samhwaexpress.co.kr" target="_blank"><img src="/images/common/foot2_s.png" alt="SAMHWA"></a></li>
+    <li><a href="http://www.jabus.co.kr" target="_blank"><img src="/images/common/foot7_s.png" alt="중앙고속"></a></li>
+    <li><a href="http://www.chunilexpress.co.kr" target="_blank"><img src="/images/common/foot8_s.png" alt="CHUNIL EXPRESS"></a></li>
+    <li><a href="http://www.hanilexpress.co.kr" target="_blank"><img src="/images/common/foot4_s.png" alt="한일고속"></a></li>
+</ul>
+<div class="family_site select-box">
+    <select name="" id="" title="관련사이트" class="select" onchange="familySite(this);">
+        <option value="">관련사이트</option>
+        <option value="www.kobus.co.kr/wchr/main.do">장애인 휠체어 사이트</option>
+        <option value="www.tago.go.kr">국가대중교통정보센터</option>
+        <!-- <option value="www.epassmobile.co.kr">고속버스모바일</option> -->
+        <option value="www.intis.or.kr">인천장애인콜택시</option>
+        <option value="www.centralcityseoul.co.kr">센트럴시티터미널</option>
+        <option value="txbus.t-money.co.kr">시외버스 통합예매시스템</option>
+    </select>
+</div>
+</div>
+<div class="foot_bottom clfix">
+<div class="foot_cont">
+    <p class="foot_menu">
+        <a href="/etc/svcstpl/SvcStpl.do">서비스 이용약관</a>
+        <a href="/etc/indlstpl/IndlStpl.do" class="indl">개인정보 처리방침</a><!-- 181121 수정 -->				
+        <a href="/etc/busstpl/BusStpl.do">고속버스 운송약관</a>
+        <!-- <a href="/etc/cmsstpl/CmsStpl.do">전자금융거래 이용약관</a> -->
+        <a href="http://www.tmoney.co.kr" class="btn_intro_footer" target="_blank">티머니</a>				
+        <a>고객센터 1644-9030</a>
+    </p>			
+    <p class="foot_addr">서울특별시 서초구 신반포로 194 <span class="mo_block">통신판매업신고: 2009-서울서초 0587호 대표자 : 이광재</span></p>
+    <p class="foot_copy">COPYRIGHT&copy; 2016. WWW.KOBUS.CO.KR . ALL RIGHT RESERVED</p>
+    <p class="foot_com">
+        <a href="/ugd/bustrop/Bustrop.do"><img src="/images/common/foot_com1.png" alt="KOBUS 전국고속버스운송사업조합" /></a>
+        <a href="/ugd/trmlbizr/Trmlbizr.do"><img src="/images/common/foot_com2.png" alt="전국여객자동차터미널사업자협회" /></a>
+    </p>
+</div>
+</div>
+
+<div class="foot_lang_wrap"> <!-- 170213 감싸는 div 추가 -->
+<select name="lng_cd_foot" id="lng_cd_foot" title="다국어선택" class="foot_lang">
+    <!-- <option value="KO" selected="selected">한국어</option> -->
+    <option value="EN">English</option>
+    <option value="CN">中文</option>
+    <option value="JP">日本語</option>
+</select>
+</div>
+</div>
+
+<!-- 웹홍보가이드 시작 -->
+<link rel="stylesheet" type="text/css" href="/ksccinfo/css/aeb_common_02.css" />
+<!-- // 웹 홍보가이드 js -->
+<script type="text/javascript" src="/ksccinfo/js/jquery.introUI_02.js?v=0.1"></script>
+<!-- // 웹 홍보가이드 끝-->
+            
+            
+            
+            
+            
+        
+    </div>
+    <!-- //contents -->
+<!-- //wrap -->
+</div>
+
+</body>
+</html>
