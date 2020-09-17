@@ -31,8 +31,8 @@
 						<h1>로고</h1>
 					</a>
 					<ul>
-						<li><a href="#">고속버스 예매</a></li>
-						<li><a href="#">예매확인</a></li>
+						<li><a href="#" aria-selected="true" data-target="#ticket-box">고속버스 예매</a></li>
+						<li><a href="#" data-target=".ticket-confirm">예매확인</a></li>
 						<li><a href="#">운행정보</a></li>
 					</ul>
 				</div>
@@ -40,15 +40,15 @@
 		</div>
 	</div>
 	<div class="main-container">
-		<div class="ticketing-container">
-			<div class="tic-wrap">
+		<div class="tic-wrap ticketing-container">
+			<div class="tic-box" id="ticket-box">
 				<ul class="route-box">
 					<li class="one-way"><a href="#"> 편도</a></li>
 					<li class="round-trip"><a href="#">왕복</a></li>
 				</ul>
 				<ul class="place-box">
-					<li class="start" data-target=".remodal-overlay,.remodal-wrapper" >
-						<a href="#" id="readDeprInfoList" >
+					<li class="start" data-target=".remodal-overlay,.remodal-wrapper">
+						<a href="#" id="readDeprInfoList">
 							<span>출발지</span>
 							<p class="text empty">
 								<span class="empty_txt">선택</span>
@@ -59,7 +59,7 @@
 						<p class="button-change"></p>
 					</li>
 					<li class="arrival" data-target=".remodal-overlay,.remodal-wrapper">
-						<a href="#" id="readArvlInfoList" >
+						<a href="#" id="readArvlInfoList">
 							<span>도착지</span>
 							<p class="text empty">
 								<span class="empty_txt">선택</span>
@@ -90,13 +90,14 @@
 					<button class="btn-complete">조회하기</button>
 				</div>
 			</div>
-			<div class="remodal-overlay remodal-is-opened" ></div>
-			<div class="remodal-wrapper full remodal-is-opened"  >
-				<div class="remodal pop_place full remodal-is-initialized remodal-is-opened">
+			<div class="remodal-overlay remodal-is-opened" style="display:none"></div>
+			<div class="remodal-wrapper full remodal-is-opened" style="display:none">
+				<div class="remodal pop_place full remodal-is-initialized remodal-is-opened" style="display:none">
 					<div class="title">
 						출/도착지 선택
 					</div>
-					<button data-remodal-action="close" class="remodal-close" aria-label="Close" data-target=".remodal-overlay,.remodal-wrapper" ></button>
+					<button data-remodal-action="close" class="remodal-close" aria-label="Close"
+						data-target=".remodal-overlay,.remodal-wrapper"></button>
 					<div class="cont">
 						<div class="place">
 							<!--focus-->
@@ -121,8 +122,8 @@
 						<div class="search_wrap">
 							<p class="focus">
 							<div class="easy-autocomplete" style="width: 620px;">
-								<input type="text" id="terminalSearch" title="터미널/지역 이름 검색"
-									placeholder="터미널/지역 이름 검색하세요" autocomplete="off">
+								<input type="text" id="terminalSearch" title="터미널/지역 이름 검색" placeholder="터미널/지역 이름 검색하세요"
+									autocomplete="off">
 								<div class="easy-autocomplete-container" id="eac-container-terminalSearch">
 									<ul style="display: none;">
 										<li>
@@ -156,8 +157,7 @@
 									<div class="area_scroll scrollbar-inner scroll-content"
 										style="height: 420px; margin-bottom: 0px; margin-right: 0px; max-height: none;">
 										<ul class="area_list">
-											<li class="active" id="areaListAll"><span
-													onclick="fnDeprArvlViewList('all');">전체</span></li>
+											<li class="active" id="areaListAll"><span onclick="fnDeprArvlViewList('all');">전체</span></li>
 											<li class=""><span onclick="fnDeprArvlViewList('11');">서울</span></li>
 											<li class=""><span onclick="fnDeprArvlViewList('28');">인천/경기</span></li>
 											<li class=""><span onclick="fnDeprArvlViewList('42');">강원</span></li>
@@ -185,8 +185,7 @@
 									</div>
 								</div>
 								<div class="terminal_list" id="terminalList">
-									<div class="scroll-wrapper terminal_scroll scrollbar-inner"
-										style="position: relative;">
+									<div class="scroll-wrapper terminal_scroll scrollbar-inner" style="position: relative;">
 										<div class="terminal_scroll scrollbar-inner scroll-content scroll-scrolly_visible"
 											style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 420px;">
 											<ul class="clear" id="tableTrmList">
@@ -414,8 +413,8 @@
 					<div class="btns" style="padding: 30px 0;"></div>
 				</div>
 			</div>
-
-			<div class="tic-wrap ticket-confirm" style="display: none;">
+	
+			<div class="tic-box ticket-confirm">
 				<div id="login-column" class="col-md-6">
 					<div id="login-box" class="col-md-12">
 						<form id="login-form" class="form" action="" method="post">

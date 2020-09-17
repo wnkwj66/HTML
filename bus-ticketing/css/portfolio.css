@@ -16,10 +16,15 @@ input[type=text], input[type=password] {
 }
 li{
     list-style: none;
+    
 }
 a{
     color: black;
     text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
+    color: black;
 }
 .wrap{
     width: 1200px;
@@ -53,6 +58,10 @@ a{
     float: left;
     width: 170px;
 }
+.side-menu ul li:hover{
+    cursor: pointer;
+    background-color: #68b3ce;
+}
 .main-container{
     height: 700px;
     border: 1px solid green;
@@ -70,9 +79,9 @@ a{
     box-sizing: border-box;
     text-align: center;
 }
-.tic-wrap{
-    height: calc(100% - 10%);
-    margin-top: 50px;
+.tic-box{
+    /* height: calc(100% - 10%); */
+    padding: 50px 0;
     border: 1px solid purple;
 }
 .route-box{
@@ -683,3 +692,4 @@ input:focus{
 .display-none{
     display: none !important; 
 }
+.pop_place .terminal_list li:hover span { color: #68b3ce; cursor: pointer;}

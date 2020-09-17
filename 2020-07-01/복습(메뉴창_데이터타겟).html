@@ -105,16 +105,13 @@
 			/* a태그의 aria-selected 값이 true인 요소의 data-target과
 			일치하는 컨텐츠만 보여주고 나머지는 가려주는 함수*/
 			function viewContent(){
-				var target = $('.main-menu a[aria-selected=true]')
-											.attr('data-target');
+				var target = $('.main-menu a[aria-selected=true]').attr('data-target');
 				$('.box').addClass('display-none');
 				$(target).removeClass('display-none');
 			}
 			function viewBtn(){
-				var target = $('.main-menu a[aria-selected=true]')
-											.attr('data-target');
-				$('.main-menu .btn-prev,.main-menu .btn-next')
-					.removeClass('display-none');
+				var target = $('.main-menu a[aria-selected=true]').attr('data-target'); //box1
+				$('.main-menu .btn-prev,.main-menu .btn-next').removeClass('display-none');
 				if(target == '.box1')
 					$('.main-menu .btn-prev').addClass('display-none')
 				if(target == '.box6')
@@ -122,7 +119,7 @@
 			}
 			viewContent();
 			viewBtn();
-			$('.main-menu li>a').click(function(e){
+			$('.main-menu li>a').click(function(e){ //메뉴창
 				e.preventDefault();
 				$('.main-menu a').attr('aria-selected','false')
 				$(this).attr('aria-selected','true');
