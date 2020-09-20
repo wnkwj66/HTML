@@ -27,9 +27,12 @@
 					</ul>
 				</div>
 				<div class="side-menu">
-					<a href="http://127.0.0.1:5500/bus-ticketing/html/bus-ticketing.html">
-						<h1>로고</h1>
-					</a>
+					<h1>
+						<a class= "logo"href="http://127.0.0.1:5500/bus-ticketing/html/bus-ticketing.html">
+							고속버스포트폴리오
+						</a>
+
+					</h1>
 					<ul>
 						<li><a href="#" aria-selected="true" data-target="#ticket-box">고속버스 예매</a></li>
 						<li><a href="#" data-target=".ticket-confirm">예매확인</a></li>
@@ -43,15 +46,15 @@
 		<div class="tic-wrap ticketing-container">
 			<div class="tic-box" id="ticket-box">
 				<ul class="route-box">
-					<li class="one-way"><a href="#"> 편도</a></li>
+					<li class="one-way active"><a href="#"> 편도</a></li>
 					<li class="round-trip"><a href="#">왕복</a></li>
 				</ul>
 				<ul class="place-box">
 					<li class="start" data-target=".remodal-overlay,.remodal-wrapper">
 						<a href="#" id="readDeprInfoList">
-							<span>출발지</span>
+							<span class="name">출발지</span>
 							<p class="text empty">
-								<span class="empty_txt">선택</span>
+								<span class="empty_txt">출발지 선택</span>
 								<span class="val-txt" id="deprNmSpn"></span>
 							</p>
 							<!-- 값 있을 경우 empty 클래스 없음 -->
@@ -60,9 +63,9 @@
 					</li>
 					<li class="arrival" data-target=".remodal-overlay,.remodal-wrapper">
 						<a href="#" id="readArvlInfoList">
-							<span>도착지</span>
+							<span class="name">도착지</span>
 							<p class="text empty">
-								<span class="empty_txt">선택</span>
+								<span class="empty_txt">도착지 선택</span>
 								<span class="val-txt" id="arvlNmSpn"></span>
 							</p>
 						</a>
@@ -70,7 +73,8 @@
 				</ul>
 				<ul class="date-box">
 					<li>
-						<div class="date">가는날
+						<div class="date">
+							<span class="name">가는날</span>
 							<p class="text">
 								<span>현재 날짜</span>
 							</p>

@@ -44,4 +44,16 @@ $(function(){
 		$(this).siblings().removeClass('active');
 		$(this).addClass('active');
 	});
+
+	// 편도 / 왕복 
+	$('.route-box li').click(function(){
+		$('.one-way').click(function(){
+			$(this).addClass('active');
+			$('.round-trip').removeClass('active');
+		})
+		$('.round-trip').click(function(){
+			$(this).addClass('active');
+			$('.one-way').removeClass('active')
+		})
+	})
 })

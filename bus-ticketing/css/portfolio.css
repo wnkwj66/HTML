@@ -36,7 +36,6 @@ a:hover{
 }
 .top-menu{
     height: 23px;
-    border: 1px solid red;
 }
 .top-menu ul{
     float: right;
@@ -44,11 +43,36 @@ a:hover{
 .top-menu ul li{
     float: left;
     padding: 0 10px;
+    position: relative;
+}
+.top-menu > ul li a{
+    font-size: 12px;
+}
+.top-menu > ul li a::after{
+    display: block;
+    content: '';
+    position: absolute;
+    top: 8px;
+    right: 0px;
+    width: 1px;
+    height: 10px;
+    border-left: 1px solid black;
+    opacity: 0.4;
 }
 .side-menu{
     height: 80px;
-    border: 1px solid red;
     line-height: 78px;
+}
+.side-menu h1{
+    height: 60px;
+    padding: 35px 0 0 40px;
+}
+.side-menu .logo{
+    background: url(../css/img/logo_pc.png) center 0 no-repeat;
+    font-size: 13px;
+    padding-top: 56px;
+    font-weight: bold;
+    text-align: center;
 }
 .side-menu ul{
     float: right;
@@ -66,17 +90,17 @@ a:hover{
     height: 700px;
     border: 1px solid green;
     position: relative;    
-    background-image: url(/2020-06-03/tani.jpg);
+    background-image: url(../css/img/2560x1600_px_And_black_Blur_Bus_city_England_Lights-1715821.jpg);
 }
 .ticketing-container{
     width: 450px;
     border: 1px solid blue;
-    background-color: #f3f4f6;
+    background-color: #68b3ce;
     height: 100%;
     position: absolute;
     right: 420px;
     top: 0;
-    box-sizing: border-box;
+    box-sizing: content-box;
     text-align: center;
 }
 .tic-box{
@@ -86,21 +110,109 @@ a:hover{
 }
 .route-box{
     margin: 0 auto;
-    width: calc(100% - 10px);
-    height: 25px;
+    height: 35px;
+    width: 449px;
+    font-size: 18px;
     text-align: center;
     box-sizing: border-box;
-    border: 1px solid black;
+    background-color: #FFF;
     border-radius: 5px;
+    line-height: 35px;
+    display: flex;
+    overflow: hidden;
+}
+.route-box li:hover{
+    cursor: pointer;
 }
 .route-box li:first-child{
     float: left;
-    width: calc((100% / 2) - 2px);
-    border-right:1px solid black;
+    height: 100%;
+    width: 100%;
+    border-right:1px solid #e6e6e6;
+}
+.route-box .one-way{
+    background-color: #e6e6e6;
+}
+.route-box .one-way.active{
+    background-color: #fff;
+}
+.route-box .one-way.active a{
+    color: #68b3ce;
+}
+.route-box .one-way.active a::before{
+    display: inline-block;
+    content: '';
+    background: url(../css/img/ico_oneway_on.png) 0 0 no-repeat;
+    background-size: 100%;
+    width: 19px;
+    height: 12px;
+    margin-right: 5px;
+}
+.route-box .one-way.active a::after{
+    display: inline-block;
+    content: '';
+    background: url(../css/img/ico_tab_s_on.png) 0 0 no-repeat;
+    background-size: 100%;
+    width: 11px;
+    height: 12px;
+    margin-left: 6px;
+}
+.route-box .one-way a{
+    color: #999;
+}
+.route-box .one-way a::before{
+    display: inline-block;
+    content: '';
+    background: url(../css/img/ico_oneway.png) 0 0 no-repeat;
+    background-size: 100%;
+    width: 19px;
+    height: 12px;
+    margin-right: 5px;
+}
+.route-box .round-trip{
+    width: 100%;
+    float: right;
+    background-color: #e6e6e6;
+}
+.route-box .round-trip a{
+    color: #999;
+}
+.route-box .round-trip a::before{
+    display: inline-block;
+    content: '';
+    background: url(../css/img/ico_roundtrip.png) 0 0 no-repeat;
+    background-size: 100%;
+    width: 19px;
+    height: 19px;
+    margin:0 9px -4px 0;
+}
+.route-box .round-trip.active{
+    background-color: #fff;
+}
+.route-box .round-trip.active a{
+    color: #68b3ce;
+}
+.route-box .round-trip.active a::before{
+    display: inline-block;
+    content: '';
+    background: url(../css/img/ico_roundtrip_on.png) 0 0 no-repeat;
+    background-size: 100%;
+    width: 19px;
+    height: 19px;
+    margin:0 9px -4px 0;
+}
+.route-box .round-trip.active a::after{
+    display: inline-block;
+    content: '';
+    background: url(../css/img/ico_tab_s_on.png) 0 0 no-repeat;
+    background-size: 100%;
+    width: 11px;
+    height: 12px;
+    margin-left: 6px;
 }
 .tic-wrap .place-box{
     margin: 20px auto;
-    width: calc(100% - 10px);
+    width: 100%;
     height: 100px;
 }
 .place-box > li{
@@ -109,22 +221,34 @@ a:hover{
     border-radius: 5px;
     float: right;
     height: 100%;
-    width: calc(50% - 4px);
-    border: 1px solid black;				
+    width: calc(50% - 4px);		
+    background-color: #f3f4f6;		
 }
 .place-box > li:first-child{
     float: left;
 }
+.place-box .name{
+    display: block;
+    font-size: 14px;
+    padding: 0 0 0 10px;
+    float: left;
+}
 .place-box .text{
     height: 60px;
-    line-height:  58px;
+    text-align: center;
+    float: left;
+    color: #b3b3b3;
+    font-size: 23px;
+    line-height: 48px;
+    padding: 0 45px 0 12px;
 }
 .button-change{
     width: 35px;
     height: 35px;
     position: absolute;
-    background-color: blue;
+    background:url(../css/img/arrow_toggle_s.png) 0 5px no-repeat;;
     right: -21px;
+    z-index: 50;
     top: 35px;
 }
 .place-box > li,
@@ -135,15 +259,19 @@ a:hover{
 .date-box >li{
     margin:0 auto;
     position: relative;
-    width: 420px;
     height: 100px;
-    border: 1px solid black;
+    background: #f3f4f6;
     border-radius: 5px;
 }
+.date-box .name{
+    display: block;
+    float: left;
+    padding-left: 10px;
+    font-size: 14px;
+}
 .grade-box > li{
-    border: 1px solid black;
     margin: 0 auto;
-    width: 420px;
+    background: #f3f4f6;
     height: 70px;
     border-radius: 5px;
 }
