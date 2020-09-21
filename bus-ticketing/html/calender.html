@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>달력</title>
+    <!-- // jQuery UI CSS파일  -->
+    <link rel="stylesheet" href="../css/nomaldatepicker.css" type="text/css" />  
+    <link href="../css/datepicker.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="../css/test.css" type="text/css">
+    <!-- // jQuery 기본 js파일 -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+    <!-- // jQuery UI 라이브러리 js파일 -->
+    <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
+
+</head>
+<script>
+    //script구문 내부에 해당 메소드를 입력합니다.
+$(function() {
+    $( "#testDatepicker" ).datepicker({
+        showOn: "both", 
+        buttonImage: "button.png", 
+        buttonImageOnly: true,
+        //날짜 선택 시 데이터 표기 방법 ex) yy.mm.dd = 2020.09.21
+        dateFormat: "yy. m. d. D", // 2020.9.21.월
+        //한글화
+        dayNames: [ "일요일","월요일","화요일","수요일","목요일","금요일","토요일" ],
+        dayNamesShort: [ "일","월","화","수","목","금","토" ],
+	    dayNamesMin: [ "일","월","화","수","목","금","토" ],
+        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+        closeText: "닫기",
+        prevText: "이전달",
+        nextText: "다음달",
+        currentText: "오늘",
+        weekHeader: "주",
+        firstDay: 0,
+        isRTL: false,
+        showMonthAfterYear: true,
+        yearSuffix: "." ,
+        beforeShow: function(){
+            var date_offset = $(this).parents('.date_picker_wrap').offset();
+			var date_width  = $(this).parents('.date_picker_wrap').outerWidth();
+            var date_height = $(this).parents('.date_picker_wrap').outerHeight();
+            setTimeout(function(){
+					$('#ui-datepicker-div').css({
+						"top" : date_offset.top + date_height ,
+						"left" : 0
+					});
+				});
+        }  
+    }).datepicker('setDate', new Date());
+});
+</script>
+<body>
+    
+    <input type="text" class="date_picker_wrap" id="testDatepicker">  
+</body>
+<style>
+    .date_picker_wrap{
+        width: 220px;
+        height: 50px;
+        background-color: none;
+        border: none;
+        font-size: 25px;
+    }
+    .date_picker_wrap:focus{
+        outline: none;
+    }
+</style>
+</html>

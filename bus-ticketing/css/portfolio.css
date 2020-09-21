@@ -10,7 +10,7 @@ input[type=text], input[type=password] {
     padding: 3px 1px 2px 1px;
     color: #444;
     text-indent: 7px;
-    *text-indent: 0;
+    text-indent: 0;
     vertical-align: middle;
     border: 1px solid #ccc;
 }
@@ -264,10 +264,17 @@ a:hover{
     border-radius: 5px;
 }
 .date-box .name{
-    display: block;
-    float: left;
+    position: relative;
+    right:177px;
     padding-left: 10px;
-    font-size: 14px;
+    font-size: 17px;
+}
+.date-box .name .text{
+    height: 60px;
+    padding: 5px 0 0;
+    font-size: 19px;
+    color: #000;
+    line-height: 1.3;
 }
 .grade-box > li{
     margin: 0 auto;
@@ -821,3 +828,28 @@ input:focus{
     display: none !important; 
 }
 .pop_place .terminal_list li:hover span { color: #68b3ce; cursor: pointer;}
+
+.ui-datepicker-trigger {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 60%;
+    width: 40px;
+    height: 35px;
+    margin-top: -13px;
+    font-size: 0;
+    cursor: pointer;
+}
+.text .hasDatepicker{
+    display: block;
+    width: 200px;
+    height: 100%;
+    padding-left: 10px;
+    font-size: 30px;
+    color: #000;
+    background-color: transparent;
+    border: none;
+}
+.hasDatepicker:focus{
+    outline: none;
+}
