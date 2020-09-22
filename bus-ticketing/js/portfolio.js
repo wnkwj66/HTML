@@ -79,5 +79,5 @@ $(function(){
         showMonthAfterYear: true,
 		yearSuffix: ".",
 	}).datepicker('setDate', new Date());
-	$('.ui-datepicker ').css( {"margin":"15px 0 0 -15px"},{})
+	$('.ui-datepicker ').css( {"margin":"14px 0 0 -15px"},{})
 })

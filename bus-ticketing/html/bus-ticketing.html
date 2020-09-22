@@ -36,7 +36,7 @@
 				<div class="side-menu">
 					<h1>
 						<a class= "logo"href="http://127.0.0.1:5500/bus-ticketing/html/bus-ticketing.html">
-							고속버스포트폴리오
+							버스예매포트폴리오
 						</a>
 
 					</h1>
@@ -90,15 +90,28 @@
 				</ul>
 				<ul class="grade-box">
 					<li>
-						<div class="grade">등급</div>
-						전체
-						프리미엄
-						우등
-						고속
+						<div class="grade">
+							<span class="name">등급</span>
+							<p>
+								<span class="custom_radio gradeAll" style="margin-left:19px; font-size: 25px;position: relative;right: 72px;">
+									<input type="radio" id="busClsCd0" name="busClsCdR"  onclick ="fnBusClsCd(this)" value="0" />
+									<label for="busClsCd0">전체</label>
+							</span>
+							<span class="custom_radio grade2" style="margin-left: 19px;">
+									<input type="radio" id="busClsCd1" name="busClsCdR" onclick ="fnBusClsCd(this)" value="1" />
+									<label for="busClsCd1">우등</label>
+							</span>
+							<span class="custom_radio grade3" style="margin-left: 19px;">
+									<input type="radio" id="busClsCd5" name="busClsCdR" onclick ="fnBusClsCd(this)" value="2" />
+									<label for="busClsCd5">일반</label>
+							</span>
+							</p>
+						</div>
+
 					</li>
 				</ul>
 				<div class="complete">
-					<button class="btn-complete">조회하기</button>
+					<button type="button" class="btn-complete">조회하기</button>
 				</div>
 			</div>
 			<div class="remodal-overlay remodal-is-opened" style="display:none"></div>
